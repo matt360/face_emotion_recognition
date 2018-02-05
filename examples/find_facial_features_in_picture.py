@@ -35,3 +35,18 @@ for face_landmarks in face_landmarks_list:
         d.line(face_landmarks[facial_feature], width=5)
 
     pil_image.show()
+	
+	# emotions ML:
+	# feed picture
+	# tell what emotion it is (sad, happy, ect.)
+	# recognize facial features
+	# save differences in facial features (upper lip - bottom lip, eyebrows - eyes, bottom lip - chin) in an appropriate file: happy file, sad file
+	# 
+	# check for emotion:
+	# feed picture
+	# recognize facial features 
+	# compare difference in facial features to the ones in the files (file of happy differences, file of sad differences)
+	# output which emotion it fits best (check which set of data is the most similar)
+	# tell the programme if it got it right. (print "Did I get it right?")
+	# if (Yes): emotion recognized ok - exit
+	# else (No): add set of facial features to the specified array (happy, sad, ect.) set of recognizable emotions increases. 
