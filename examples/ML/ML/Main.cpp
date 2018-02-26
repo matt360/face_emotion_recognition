@@ -67,23 +67,26 @@ int main()
 			*/
 
 			// chin
+			std::cout << "chin" << std::endl;
 			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			//// left eyebrow 
+			// left eyebrow 
 			std::cout << "left eyebrow" << std::endl;
 			for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			//// right_eyebrow
-			//for (int i = 17 + 5; i < 17 + 5 + 5; ++i)
-			//{
-
-			//}
+			// right_eyebrow
+			std::cout << "right eyebrow" << std::endl;
+			for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
 			//// nose_bridge 
 			//for (int i = 17 + 5 + 5; i < 17 + 5 + 5 + 4; ++i)
 			//{
