@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "machine_learning.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...

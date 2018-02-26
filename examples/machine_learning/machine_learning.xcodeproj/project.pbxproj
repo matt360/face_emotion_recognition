@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E1E81BC22044635A00736911 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1E81BC12044635A00736911 /* main.cpp */; };
+		E1E81BCB2044656900736911 /* machine_learning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1E81BC92044656900736911 /* machine_learning.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		E1E81BBE2044635A00736911 /* machine_learning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machine_learning; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E81BC12044635A00736911 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E1E81BC92044656900736911 /* machine_learning.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = machine_learning.cpp; sourceTree = "<group>"; };
+		E1E81BCA2044656900736911 /* machine_learning.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = machine_learning.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +60,27 @@
 		E1E81BC02044635A00736911 /* machine_learning */ = {
 			isa = PBXGroup;
 			children = (
-				E1E81BC12044635A00736911 /* main.cpp */,
+				E1E81BCC2044658400736911 /* Headers */,
+				E1E81BCD2044658B00736911 /* Source */,
 			);
 			path = machine_learning;
+			sourceTree = "<group>";
+		};
+		E1E81BCC2044658400736911 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E1E81BCA2044656900736911 /* machine_learning.hpp */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		E1E81BCD2044658B00736911 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E1E81BC92044656900736911 /* machine_learning.cpp */,
+				E1E81BC12044635A00736911 /* main.cpp */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E81BC22044635A00736911 /* main.cpp in Sources */,
+				E1E81BCB2044656900736911 /* machine_learning.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
