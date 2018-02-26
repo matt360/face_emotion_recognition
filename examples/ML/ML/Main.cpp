@@ -87,11 +87,13 @@ int main()
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			//// nose_bridge 
-			//for (int i = 17 + 5 + 5; i < 17 + 5 + 5 + 4; ++i)
-			//{
-
-			//}
+			// nose_bridge 
+			std::cout << "nose bridge" << std::endl;
+			for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
 			//// nose_tip   
 			//for (int i = 17 + 5 + 5 + 4; i < 17 + 5 + 5 + 4 + 5; ++i)
 			//{
