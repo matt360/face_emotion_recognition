@@ -28,20 +28,30 @@ for face_landmarks in face_landmarks_list:
         'bottom_lip'         # 12 * (a ,b)
     ]
     
-    for facial_feature in facial_features:
-        print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
+    # print facial features and their positions in the terminal
+    # for facial_feature in facial_features:
+    #     print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
 
+    # save features into a file
     for facial_feature in facial_features:
         myFile = open('smile.csv', 'a')
         with myFile:
             writer = csv.writer(myFile)
             writer.writerows(face_landmarks[facial_feature])
         
-    for facial_feature in facial_features:
-        a = array(face_landmarks[facial_feature])
+    # for facial_feature in facial_features:
+    #     a = array(face_landmarks[facial_feature])
 
-    for facial_feature in facial_features:
-        print(a)
+    # for facial_feature in facial_features:
+    #     print(face_landmarks[facial_feature])
+        #map.append(facial_feature, face_landmarks[facial_feature])
+
+    # print data
+    # o = open('smile.csv')
+    # csv_o = csv.reader(o)
+    # for row in csv_o:
+    #     print(row[1])
+    # o.close()
 
     # Let's trace out each facial feature in the image with a line!
     pil_image = Image.fromarray(image)
@@ -50,16 +60,17 @@ for face_landmarks in face_landmarks_list:
     for facial_feature in facial_features:
         d.line(face_landmarks[facial_feature], width=1)
 
-    pil_image.show()
+    #pil_image.show()
 
-myData = [["first_name", "second_name", "Grade"],
-          ['Alex', 'Brian', 'A'],
-          ['Tom', 'Smith', 'B']]
+# TODO delete example
+# myData = [["first_name", "second_name", "Grade"],
+#           ['Alex', 'Brian', 'A'],
+#           ['Tom', 'Smith', 'B']]
 
-myFile = open('example2.csv', 'w')
-with myFile:
-    writer = csv.writer(myFile)
-    writer.writerows(myData)
+# myFile = open('example2.csv', 'w')
+# with myFile:
+#     writer = csv.writer(myFile)
+#     writer.writerows(myData)
 
 # mark picture
 #
