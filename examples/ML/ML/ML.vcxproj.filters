@@ -21,7 +21,7 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SVRow.cpp">
+    <ClCompile Include="CSVRow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="MachineLearning.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SVRow.h">
+    <ClInclude Include="CSVRow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

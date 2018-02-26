@@ -1,9 +1,8 @@
 #include "MachineLearning.h"
 
-
 MachineLearning::MachineLearning()
 {
-	m_FileData.open("/../../smile.csv");
+	//m_FileData.open("/../../smile.csv");
 }
 
 
@@ -14,7 +13,7 @@ MachineLearning::~MachineLearning()
 
 void MachineLearning::Learn()
 {
-
+	
 }
 
 /*float data[100][100];

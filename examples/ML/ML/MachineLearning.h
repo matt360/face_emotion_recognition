@@ -13,10 +13,10 @@ public:
 	~MachineLearning();
 
 	//std::ofstream m_Smile;
-public:
 	void Learn();
-	std::vector<int> m_Data;
+	//std::vector<int> m_Data;
 
+	
 private:
-	std::ifstream m_FileData;
+	//std::ifstream m_FileData;
 };
