@@ -66,55 +66,59 @@ int main()
 				std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
 			*/
 
-			// chin
+			// chin (17) [1]
 			std::cout << "chin" << std::endl;
 			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			// left eyebrow 
+			// left eyebrow (5) [18]
 			std::cout << "left eyebrow" << std::endl;
 			for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			// right_eyebrow
+			// right_eyebrow (5) [23]
 			std::cout << "right eyebrow" << std::endl;
 			for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			// nose_bridge 
+			// nose_bridge (4) [28]
 			std::cout << "nose bridge" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
 			{
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			//// nose_tip   
-			//for (int i = 17 + 5 + 5 + 4; i < 17 + 5 + 5 + 4 + 5; ++i)
-			//{
-
-			//}
-			//// left_eye    
-			//for (int i = 17 + 5 + 5 + 4 + 5; i < 17 + 5 + 5 + 4 + 5 + 6; ++i)
-			//{
-
-			//}
-			//// right_eye
+			// nose_tip (5) [32]
+			std::cout << "nose tip" << std::endl;
+			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
+			// left_eye (6) [37]
+			std::cout << "left eye" << std::endl;
+			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
+			//// right_eye (6) [43]
 			//for (int i = 17 + 5 + 5 + 4 + 5 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6; ++i)
 			//{
 
 			//}
-			//// top_lip     
+			//// top_lip (12) [49]
 			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; ++i)
 			//{
 
 			//}
-			//// bottom_lip
+			//// bottom_lip (12) [61]
 			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12 + 12; ++i)
 			//{
 
