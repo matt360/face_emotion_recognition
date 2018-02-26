@@ -46,30 +46,39 @@ int main()
 	}
 	fclose(fp);
 
+	/*
 	for (auto c : learning_data)
 		std::cout << c << std::endl;
+	*/
 
-	std::cout << "size: " << learning_data.size() / 72 << std::endl;
+	// the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
+	// by 144 to get the number of pictures examined.
+	std::cout << "size: " << floor(learning_data.size() / 144) << std::endl;
 
-	for (int i = 0; i < learning_data.size() / 72; i++)
+	for (int i = 0; i < learning_data.size() / 144; i++)
 	{
-		for (int j = 0; j < 72; j++)
-		{
+		//for (int j = 0; j < 72 * 2; j++)
+		//{
+			/*
 			if (j % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
 				std::cout << "even j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
 			else // place in the learning data vector is odd (1, 3, 5 ... 13)
 				std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
+			*/
 
 			// chin
-			//for (int i = 0; i < 17; ++i)
-			//{
-
-			//}
+			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
 			//// left eyebrow 
-			//for (int i = 17; i < 17 + 5; ++i)
-			//{
-
-			//}
+			std::cout << "left eyebrow" << std::endl;
+			for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
+			{
+				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i + 1) << std::endl;
+			}
 			//// right_eyebrow
 			//for (int i = 17 + 5; i < 17 + 5 + 5; ++i)
 			//{
@@ -124,7 +133,7 @@ int main()
 			// a distance of the right_eyebrow from the right_eye 
 
 			// a distance of the top_lip from the bottom_lip
-		}
+		//}
 
 	}
 
