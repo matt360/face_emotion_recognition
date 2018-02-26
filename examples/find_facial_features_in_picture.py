@@ -31,10 +31,14 @@ for face_landmarks in face_landmarks_list:
     
     for facial_feature in facial_features:
         print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
+
+    for facial_feature in facial_features:
+        string = ("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
         myFile = open('smile.csv', 'w')
         with myFile:
             writer = csv.writer(myFile)
-            writer.writerows(face_landmarks[facial_feature])
+            writer.writerows(string)
+            #writer.writerows(face_landmarks[facial_feature])
         #with open('smile.csv', 'w', newline='') as fp:
         #    a = csv.writer(fp, delimiter='\n')
         #    a.writerows(face_landmarks[facial_feature])
