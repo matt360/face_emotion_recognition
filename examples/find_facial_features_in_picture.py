@@ -7,7 +7,7 @@ import array
 # to run the application in the terminal: 'python3 find_facial_features_in_picture.py'
 
 # Load the jpg file into a numpy array
-image = face_recognition.load_image_file("obama_small.jpg")
+image = face_recognition.load_image_file("obama-720p.jpg")
 
 # Find all facial features in all the faces in the image
 face_landmarks_list = face_recognition.face_landmarks(image)
@@ -18,30 +18,28 @@ for face_landmarks in face_landmarks_list:
 
     # Print the location of each facial feature in this image
     facial_features = [
-        'chin',
-        'left_eyebrow',
-        'right_eyebrow',
-        'nose_bridge',
-        'nose_tip',
-        'left_eye',
-        'right_eye',
-        'top_lip',
-        'bottom_lip'
+        'chin',              # 17 * (a ,b)
+        'left_eyebrow',      # 5 * (a ,b)
+        'right_eyebrow',     # 5 * (a ,b)
+        'nose_bridge',       # 4 * (a ,b)
+        'nose_tip',          # 5 * (a ,b)
+        'left_eye',          # 6 * (a ,b)
+        'right_eye',         # 6 * (a ,b)
+        'top_lip',           # 12 * (a ,b)
+        'bottom_lip'         # 12 * (a ,b)
     ]
     
     for facial_feature in facial_features:
         print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
 
     for facial_feature in facial_features:
-        string = ("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
-        myFile = open('smile.csv', 'w')
+        myFile = open('smile.csv', 'a')
         with myFile:
             writer = csv.writer(myFile)
-            writer.writerows(string)
-            #writer.writerows(face_landmarks[facial_feature])
-        #with open('smile.csv', 'w', newline='') as fp:
-        #    a = csv.writer(fp, delimiter='\n')
-        #    a.writerows(face_landmarks[facial_feature])
+            writer.writerows(face_landmarks[facial_feature])
+        
+    for facial_feature in facial_features:
+        
 
     # Let's trace out each facial feature in the image with a line!
     pil_image = Image.fromarray(image)
