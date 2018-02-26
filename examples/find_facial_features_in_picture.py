@@ -1,7 +1,6 @@
 from PIL import Image, ImageDraw
 import face_recognition
 import csv
-from numpy import array
 
 # to run the application in the terminal: 'python3 find_facial_features_in_picture.py'
 
