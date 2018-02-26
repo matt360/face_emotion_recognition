@@ -35,7 +35,7 @@ for face_landmarks in face_landmarks_list:
         string = ("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
         with open('smile.csv', 'w', newline='') as fp:
             a = csv.writer(fp, delimiter=',')
-            a.writerows(face_landmarks[facial_feature])
+            a.writerows(string)
 
     # Let's trace out each facial feature in the image with a line!
     pil_image = Image.fromarray(image)
