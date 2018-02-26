@@ -55,7 +55,7 @@ int main()
 	// by 144 to get the number of pictures examined.
 	std::cout << "size: " << floor(learning_data.size() / 144) << std::endl;
 
-	for (int i = 0; i < learning_data.size() / 144; i++)
+	for (int i = 0; i < learning_data.size(); i += 144)
 	{
 		//for (int j = 0; j < 72 * 2; j++)
 		//{
@@ -108,21 +108,24 @@ int main()
 				std::cout << learning_data.at(i) << std::endl;
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
-			//// right_eye (6) [43]
-			//for (int i = 17 + 5 + 5 + 4 + 5 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6; ++i)
-			//{
+			// right_eye (6) [43]
+			std::cout << "right eye" << std::endl;
+			for (int i = 17 + 5 + 5 + 4 + 5 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6; i += 2)
+			{
 
-			//}
-			//// top_lip (12) [49]
-			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; ++i)
-			//{
+			}
+			// top_lip (12) [49]
+			std::cout << "top lip" << std::endl;
+			for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; i += 2)
+			{
 
-			//}
-			//// bottom_lip (12) [61]
-			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12 + 12; ++i)
-			//{
+			}
+			// bottom_lip (12) [61]
+			std::cout << "bottom lip" << std::endl;
+			for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12 + 12; i += 2)
+			{
 
-			//}
+			}
 
 			// data in the facial_recognition algorithm has a layout:
 			/*
