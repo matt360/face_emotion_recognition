@@ -9,6 +9,16 @@
 #ifndef machine_learning_hpp
 #define machine_learning_hpp
 
-#include <stdio.h>
+#include <fstream>
+
+class MachineLearning
+{
+public:
+    MachineLearning();
+    ~MachineLearning();             
+
+    std::ofstream m_Smile;
+    
+};
 
 #endif /* machine_learning_hpp */

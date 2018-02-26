@@ -7,3 +7,13 @@
 //
 
 #include "machine_learning.hpp"
+
+MachineLearning::MachineLearning()
+{
+    m_Smile.open("../../../smile.csv");
+}
+
+MachineLearning::~MachineLearning()
+{
+    
+}
