@@ -1,8 +1,7 @@
 from PIL import Image, ImageDraw
 import face_recognition
 import csv
-import numpy as np
-import array
+from numpy import array
 
 # to run the application in the terminal: 'python3 find_facial_features_in_picture.py'
 
@@ -39,7 +38,10 @@ for face_landmarks in face_landmarks_list:
             writer.writerows(face_landmarks[facial_feature])
         
     for facial_feature in facial_features:
-        
+        a = array(face_landmarks[facial_feature])
+
+    for facial_feature in facial_features:
+        print(a)
 
     # Let's trace out each facial feature in the image with a line!
     pil_image = Image.fromarray(image)
