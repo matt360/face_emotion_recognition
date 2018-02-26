@@ -1,75 +1,8 @@
-//#pragma once
-//
-//#include <iterator>
-//#include <iostream>
-//#include <fstream>
-//#include <sstream>
-//#include <vector>
-//#include <string>
-//
-//class CSVRow
-//{
-//public:
-//	std::string const& operator[](std::size_t index) const
-//	{
-//		return m_data[index];
-//	}
-//	std::size_t size() const
-//	{
-//		return m_data.size();
-//	}
-//	void readNextRow(std::istream& str)
-//	{
-//		std::string         line;
-//		std::getline(str, line);
-//
-//		std::stringstream   lineStream(line);
-//		std::string         cell;
-//
-//		m_data.clear();
-//		while (std::getline(lineStream, cell, ','))
-//		{
-//			m_data.push_back(cell);
-//		}
-//		// This checks for a trailing comma with no data after it.
-//		if (!lineStream && cell.empty())
-//		{
-//			// If there was a trailing comma then add an empty element.
-//			m_data.push_back("");
-//		}
-//	}
-//private:
-//	std::vector<std::string>    m_data;
-//};
-//
-//std::istream& operator >> (std::istream& str, CSVRow& data)
-//{
-//	data.readNextRow(str);
-//	return str;
-//}
-//
-//int main()
-//{
-//	std::ifstream file("\..\smile.csv");
-//
-//	CSVRow row;
-//	while (file >> row)
-//	{
-//		std::cout << "4th Element(" << row[1] << ")\n";
-//	}
-//
-//	std::cin.get();
-//}
-//
-
 #pragma warning(disable : 4996)
 
-#include <iterator>
 #include <iostream>
-#include <fstream>
 #include <sstream>
 #include <vector>
-#include <string>
 
 int main()
 {
@@ -94,8 +27,7 @@ int main()
 
 	FILE *fp;
 	char str1[10], str2[10];
-	char c_array[100][100];
-	std::vector<int> string_vector;
+	std::vector<int> learning_data;
 
 	fp = fopen("../../smile.csv", "r");
 	if (NULL == fp)
@@ -104,16 +36,23 @@ int main()
 		return 0;
 	}
 
-	int i = 0, j = 0;
 	while (EOF != fscanf(fp, " %[^,], %s, %s ", str1, str2))
 	{
-		string_vector.push_back(std::stoi(str1));
-		string_vector.push_back(std::stoi(str2));
+		learning_data.push_back(std::stoi(str1));
+		learning_data.push_back(std::stoi(str2));
 	}
 	fclose(fp);
 
-	for (auto c : string_vector)
+	for (auto c : learning_data)
 		std::cout << c << std::endl;
+
+	for (int i = 0; i < learning_data.size(); ++i)
+	{
+		if (i % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
+			std::cout << "even i: " << i << " learning_data: " << learning_data.at(i) << std::endl;
+		else // place in the learning data vector is odd (1, 3, 5 ... 13)
+			std::cout << "odd  i: " << i << " learning_data: " << learning_data.at(i) << std::endl;
+	}
 
 	std::cin.get();
 }
