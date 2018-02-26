@@ -66,7 +66,7 @@ int main()
 				std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
 			*/
 
-			// chin (17) [1]
+			// chin (17) [1] - (number of elements for the facial feature) [place in the .csv file + i]
 			std::cout << "chin" << std::endl;
 			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
 			{
