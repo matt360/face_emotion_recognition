@@ -49,46 +49,82 @@ int main()
 	for (auto c : learning_data)
 		std::cout << c << std::endl;
 
-	for (int i = 0; i < learning_data.size(); ++i)
+	std::cout << "size: " << learning_data.size() / 72 << std::endl;
+
+	for (int i = 0; i < learning_data.size() / 72; i++)
 	{
-		if (i % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
-			std::cout << "even i: " << i << " learning_data: " << learning_data.at(i) << std::endl;
-		else // place in the learning data vector is odd (1, 3, 5 ... 13)
-			std::cout << "odd  i: " << i << " learning_data: " << learning_data.at(i) << std::endl;
+		for (int j = 0; j < 72; j++)
+		{
+			if (j % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
+				std::cout << "even j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
+			else // place in the learning data vector is odd (1, 3, 5 ... 13)
+				std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
 
-		// chin
-		for (int i = 0; i < 17; ++i)
+			// chin
+			//for (int i = 0; i < 17; ++i)
+			//{
 
-		// left eyebrow 
-		for (int i = 0; i < 5; ++i)
+			//}
+			//// left eyebrow 
+			//for (int i = 17; i < 17 + 5; ++i)
+			//{
 
-		// right_eyebrow
-		// nose_bridge 
-		// nose_tip   
-		// left_eye    
-		// right_eye   
-		// top_lip     
-		// bottom_lip
+			//}
+			//// right_eyebrow
+			//for (int i = 17 + 5; i < 17 + 5 + 5; ++i)
+			//{
 
-		// data in the facial_recognition algorithm has a layout:
-		/*
-		'chin',          17 * (a, b)
-		'left_eyebrow',  5 * (a, b)
-		'right_eyebrow', 5 * (a, b)
-		'nose_bridge',   4 * (a, b)
-		'nose_tip',      5 * (a, b)
-		'left_eye',      6 * (a, b)
-		'right_eye',     6 * (a, b)
-		'top_lip',       12 * (a, b)
-		'bottom_lip'     12 * (a, b)
-		*/
-		// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
-		// a distance of the left_eyebrow from the left_eye 
+			//}
+			//// nose_bridge 
+			//for (int i = 17 + 5 + 5; i < 17 + 5 + 5 + 4; ++i)
+			//{
 
-		// a distance of the right_eyebrow from the right_eye 
+			//}
+			//// nose_tip   
+			//for (int i = 17 + 5 + 5 + 4; i < 17 + 5 + 5 + 4 + 5; ++i)
+			//{
 
-		// a distance of the top_lip from the bottom_lip
+			//}
+			//// left_eye    
+			//for (int i = 17 + 5 + 5 + 4 + 5; i < 17 + 5 + 5 + 4 + 5 + 6; ++i)
+			//{
 
+			//}
+			//// right_eye
+			//for (int i = 17 + 5 + 5 + 4 + 5 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6; ++i)
+			//{
+
+			//}
+			//// top_lip     
+			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; ++i)
+			//{
+
+			//}
+			//// bottom_lip
+			//for (int i = 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12; i < 17 + 5 + 5 + 4 + 5 + 6 + 6 + 12 + 12; ++i)
+			//{
+
+			//}
+
+			// data in the facial_recognition algorithm has a layout:
+			/*
+			'chin',          17 * (a, b)
+			'left_eyebrow',  5 * (a, b)
+			'right_eyebrow', 5 * (a, b)
+			'nose_bridge',   4 * (a, b)
+			'nose_tip',      5 * (a, b)
+			'left_eye',      6 * (a, b)
+			'right_eye',     6 * (a, b)
+			'top_lip',       12 * (a, b)
+			'bottom_lip'     12 * (a, b)
+			*/
+			// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
+			// a distance of the left_eyebrow from the left_eye 
+
+			// a distance of the right_eyebrow from the right_eye 
+
+			// a distance of the top_lip from the bottom_lip
+		}
 
 	}
 
