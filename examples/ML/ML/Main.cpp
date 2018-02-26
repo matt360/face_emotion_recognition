@@ -77,7 +77,7 @@ int main()
 	FILE *fp;
 	char str1[10], str2[10], str3[10], str4[10];
 
-	fp = fopen("smile.csv", "r");
+	fp = fopen("../../smile.csv", "r");
 	if (NULL == fp)
 	{
 		printf("\nError in opening file.");
