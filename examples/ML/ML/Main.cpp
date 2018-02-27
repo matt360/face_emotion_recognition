@@ -200,38 +200,43 @@ void CalculateEmotionWeightingsForSmile()
 	// a distance of the left_eyebrow from the left_eye :
 	// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
 	// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
-
-	// a distance from the left_eyebrow to the left_eye: 
-	//if (left_eyebrow.size() == left_eye.size())
-	for (int i = 0; i < left_eyebrow.size(); i++)
-		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
-
-	// a distance from right_eyebrow to the right_eye: 
-	//if (right_eyebrow.size() == right_eye.size())
-	for (int i = 0; i < right_eyebrow.size(); i++)
-		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
-
-	// a distance from the top_lip to the bottom_lip:
-	//if (top_lip.size() == bottom_lip.size())
-	for (int i = 0; i < top_lip.size(); i++)
-		top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
-
-	// a distance from the nose tip to the nose bridge:
-	//if (nose_tip.size() == nose_bridge.size())
-	for (int i = 0; i < nose_tip.size(); i++)
-		nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
-
+	/*
+	const int CHIN = 17;			 // 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
+	const int LEFT_EYEBROW = 5;      //  5 * (a, b)
+	const int RIGHT_EYEBROW = 5;     //  5 * (a, b)
+	const int NOSE_BRIDGE = 4;       //  4 * (a, b)
+	const int NOSE_TIP = 5;          //  5 * (a, b)
+	const int LEFT_EYE = 6;          //  6 * (a, b)
+	const int RIGHT_EYE = 6;         //  6 * (a, b)
+	const int TOP_LIP = 12;          // 12 * (a, b)
+	const int BOTTOM_LIP = 12;       // 12 * (a, b)
+	const int LIP_DIST = 12;
+	const int EYE_EYEBROW_DIST = 5;
+	const int NOSE_DIST = 4;
+	*/
 
 	// append emotion weighted values for smile into the file
-	// if (emv != any set of values in the file)
+	//for (int i = 1; i < left_eyebrow.size() - 1; i++)
+	//{
+	//	// (5 - 6)
+	//	// at the beginning we don't have to adjust for vector size difference
+	//	if (i == 1 || i == 2)
+	//		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i - 1) - left_eye.at(i - 1));
+	//	// do reduction only if 'i' is dividable by 3
+	//	else if (i % 3 == 0 && i % 4 != 0 && i % 6 != 0)
+	//		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i - 1) - (left_eye.at(i) - left_eye.at(i - 1))); // we add one to acomodate for different vector sizes
+	//	else
+	//		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i - 1) - left_eye.at(i));
+	//}
 	for (int i = 0; i < left_eyebrow.size(); i++)
 		// (5 - 6)
-		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
+		// at the beginning we don't have to adjust for vector size difference
+		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
 
 	// a distance of the right_eyebrow from the right_eye: 
 	for (int i = 0; i < right_eyebrow.size(); i++)
 		// (5 - 6)
-		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
+		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
 
 	// a distance of the top_lip from the bottom_lip:
 	for (int i = 0; i < top_lip.size(); i++)
@@ -239,11 +244,16 @@ void CalculateEmotionWeightingsForSmile()
 		top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
 
 	// a distance from the nose tip to the nose bridge:
-	//for (int i = 0; i < nose_tip.size(); i++)
-	//	// (5 - 4)
-	//	nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
+	for (int i = 0; i < nose_bridge.size(); i++)
+		// (5 - 4)
+		nose_tip_nose_bridge_distance.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
 
-	m_SmileWeightings << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
+	// if (emv != any set of values in the file)
+	//for (auto lelebd : left_eyebrow_left_eye_distance)
+	//	for (auto rerebd : right_eyebrow_right_eye_distance)
+	//		for (auto tlbld : top_lip_bottom_lip_distance)
+	//			for (auto ntnbd : nose_tip_nose_bridge_distance)
+	//				m_SmileWeightings << lelebd << ',' << rerebd << ',' << tlbld << ',' << ntnbd << std::endl; // ',' - makes it go to the next cell in the .csv file
 }
 
 int main()
