@@ -14,6 +14,9 @@
 #define RIGHT_EYE      6   //  6 * (a, b)
 #define TOP_LIP       12   // 12 * (a, b)
 #define BOTTOM_LIP    12   // 12 * (a, b)
+#define LIP_DIST           12
+#define EYE_EYEBROW_DIST   5
+#define NOSE_DIST          4
 
 // vector to store the data of the facial features to learn from
 std::vector<int> learning_data;
@@ -165,12 +168,12 @@ std::vector<int> left_eyebrow_left_eye_distance;
 std::vector<int> right_eyebrow_right_eye_distance;
 std::vector<int> nose_tip_nose_bridge_distance;
 // to store smile weightings
-std::ofstream m_Smile;
+std::ofstream m_SmileWeightings;
 
 void CalculateEmotionWeightingsForSmile()
 {
 	// std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
-	m_Smile.open("smile_learning.csv", std::ios_base::app);
+	m_SmileWeightings.open("smile_learning.csv", std::ios_base::app);
 
 	// data in the facial_recognition algorithm has a layout:
 	/*
@@ -185,27 +188,24 @@ void CalculateEmotionWeightingsForSmile()
 	'bottom_lip'     12 * (a, b)
 	*/
 	// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
-	// a distance of the left_eyebrow from the left_eye 
+	// a distance of the left_eyebrow from the left_eye :
 	// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
 	// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
-	//                                                      
-	// a distance of the right_eyebrow from the right_eye 
-	// 5 - 6 (
-	// a distance of the top_lip from the bottom_lip
+	for (int i = 0; i < )
+	top_lip_bottom_lip_distance.push_back();
+	// a distance of the right_eyebrow from the right_eye: 
+	// 5 - 6
+	// a distance of the top_lip from the bottom_lip:
 	// 12 - 12
-	// nose tip - nose bridge
+	// nose tip - nose bridge:
 	// 5 - 4
-	// append emotion weighted values (emv) for the smile
+	// append emotion weighted values for smile into the file
 	// if (emv != any set of values in the file)
-	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
+	m_SmileWeightings << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 }
 
 int main()
 {
-	
-
-	
-
 	GenerateLearningVectorFromAFile();
 
 	PopulateFacialFeaturesVectors();
@@ -226,7 +226,7 @@ int main()
 		smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
 	*/
 
-	m_Smile.close();
+	m_SmileWeightings.close();
 
 	std::cin.get();
 }
