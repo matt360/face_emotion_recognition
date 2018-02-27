@@ -83,44 +83,25 @@ int main()
 	// the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
 	// by 144 to get the number of pictures examined.
 	std::cout << "learning_data size: " << floor(learning_data.size() / 144) << std::endl;
-
+	// for the same reason we increase 'i' by 144
 	for (int i = 0; i < learning_data.size(); i += 144)
 	{
-		/*
-		if (j % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
-			std::cout << "even j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
-		else // place in the learning data vector is odd (1, 3, 5 ... 13)
-			std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
-		*/
-
 		// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
-		//std::cout << "chin" << std::endl;
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 		for (int i = 0; i < 34; i++) // we need to multiply it by 2 to get all the data since it's a 1D array
-		{
-			/*std::cout << learning_data.at(i) << ", ";
-			std::cout << learning_data.at(i + 1) << std::endl;*/
 			// create a vector of chin positions
-			chin.push_back(learning_data.at(i));
-		}
+			chin.push_back(learning_data.at(i)); 
+
 		// left eyebrow (5) [18]
-		//std::cout << "left eyebrow" << std::endl;
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 		for (int i = 34; i < 44; i++)
-		{
-			/*std::cout << learning_data.at(i) << ", ";
-			std::cout << learning_data.at(i + 1) << std::endl;*/
 			left_eyebrow.push_back(learning_data.at(i));;
-		}
+
 		// right_eyebrow (5) [23]
-		//std::cout << "right eyebrow" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
 		for (int i = 44; i < 54; i++)
-		{
-			/*std::cout << learning_data.at(i) << ", ";
-			std::cout << learning_data.at(i + 1) << std::endl;*/
 			right_eyebrow.push_back(learning_data.at(i));;;
-		}
+
 		// nose_bridge (4) [28]
 		//std::cout << "nose bridge" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
