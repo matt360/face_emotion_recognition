@@ -151,19 +151,23 @@ int main()
 			}
 			// top_lip (12) [49]
 			std::cout << "top lip" << std::endl;
+			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
+			//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
 			for (int i = 96; i < 120; i++)
 			{
 				/*std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;*/
-				std::vector<int> top_lip;
+				top_lip.push_back(learning_data.at(i));
 			}
 			// bottom_lip (12) [61]
 			std::cout << "bottom lip" << std::endl;
-			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
+			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
+			//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
+			for (int i = 120; i < 144; i++)
 			{
 				/*std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;*/
-				std::vector<int> bottom_lip;
+				bottom_lip.push_back(learning_data.at(i));
 			}
 
 			// data in the facial_recognition algorithm has a layout:
@@ -197,12 +201,36 @@ int main()
 	// if (emv != any set of values in the file)
 	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 
-	/*
+	
 	// display chin values
-	std::cout << "CHIN" << std::endl;
+	std::cout << "cin" << std::endl;
 	for (int i = 0; i < 17 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	*/
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	std::cout << "cin" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	
 
 	m_Smile.close();
 
