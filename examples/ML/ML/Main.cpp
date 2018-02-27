@@ -172,10 +172,11 @@ void DisplayFacialFeaturesVectors()
 }
 
 // emotion weighted values (emv)
-std::vector<int> top_lip_bottom_lip_distance;
-std::vector<int> left_eyebrow_left_eye_distance;
-std::vector<int> right_eyebrow_right_eye_distance;
-std::vector<int> nose_tip_nose_bridge_distance;
+//std::vector<int> top_lip_bottom_lip_distance;
+//std::vector<int> left_eyebrow_left_eye_distance;
+//std::vector<int> right_eyebrow_right_eye_distance;
+//std::vector<int> nose_tip_nose_bridge_distance;
+std::vector<int> smile_weightings;
 // to store smile weightings
 std::ofstream m_SmileWeightings;
 
@@ -232,32 +233,32 @@ void CalculateEmotionWeightingsForSmile()
 	{
 		// (5 - 6)
 		// at the beginning we don't have to adjust for vector size difference
-		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
-		m_SmileWeightings << left_eyebrow_left_eye_distance.at(i) << std::endl;
+		smile_weightings.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
+		m_SmileWeightings << left_eyebrow.at(i) - left_eye.at(i + 1) << std::endl;
 	}
 
 	// a distance of the right_eyebrow from the right_eye: 
 	for (int i = 0; i < right_eyebrow.size(); i++)
 	{
 		// (5 - 6)
-		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
-		m_SmileWeightings << right_eyebrow_right_eye_distance.at(i) << std::endl;
+		smile_weightings.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
+		m_SmileWeightings << right_eyebrow.at(i) - right_eye.at(i + 1) << std::endl;
 	}
 
 	// a distance of the top_lip from the bottom_lip:
 	for (int i = 0; i < top_lip.size(); i++)
 	{
 		// (12 - 12)
-		top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
-		m_SmileWeightings << top_lip_bottom_lip_distance.at(i) << std::endl;
+		smile_weightings.push_back(top_lip.at(i) - bottom_lip.at(i));
+		m_SmileWeightings << top_lip.at(i) - bottom_lip.at(i) << std::endl;
 	}
 
 	// a distance from the nose tip to the nose bridge:
 	for (int i = 0; i < nose_bridge.size(); i++)
 	{
 		// (5 - 4)
-		nose_tip_nose_bridge_distance.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
-		m_SmileWeightings << nose_tip_nose_bridge_distance.at(i) << std::endl;
+		smile_weightings.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
+		m_SmileWeightings << nose_bridge.at(i) - nose_tip.at(i + 1) << std::endl;
 	}
 
 	// if (emv != any set of values in the file)
