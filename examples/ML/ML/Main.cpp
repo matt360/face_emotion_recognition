@@ -2,7 +2,10 @@
 
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <vector>
+
+std::ofstream m_Smile;
 
 int main()
 {
@@ -24,6 +27,8 @@ int main()
 
 	// [^,], ^ -it inverts logic , means match any string that does not contain comma then last , says to match comma that terminated previous string.
 	*/
+
+	m_Smile.open("smile_learning.csv");
 
 	FILE *fp;
 	char str1[10], str2[10];
@@ -72,6 +77,8 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				
+				//m_Smile << learning_data.at(i) - learning_data.at(i + 1) << std::endl;
 			}
 			// left eyebrow (5) [18]
 			std::cout << "left eyebrow" << std::endl;
@@ -156,6 +163,8 @@ int main()
 		//}
 
 	}
+
+	m_Smile.close();
 
 	std::cin.get();
 }
