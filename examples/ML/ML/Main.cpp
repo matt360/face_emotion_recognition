@@ -5,19 +5,19 @@
 #include <fstream>
 #include <vector>
 
-#define CHIN          17   // 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
-#define LEFT_EYEBROW   5   //  5 * (a, b)
-#define RIGHT_EYEBROW  5   //  5 * (a, b)
-#define NOSE_BRIDGE    4   //  4 * (a, b)
-#define NOSE_TIP       5   //  5 * (a, b)
-#define LEFT_EYE       6   //  6 * (a, b)
-#define RIGHT_EYE      6   //  6 * (a, b)
-#define TOP_LIP       12   // 12 * (a, b)
-#define BOTTOM_LIP    12   // 12 * (a, b)
-#define LIP_DIST           12
-#define EYE_EYEBROW_DIST   5
-#define NOSE_DIST          4
-#define STEP 2 * (CHIN + LEFT_EYEBROW + RIGHT_EYEBROW + NOSE_BRIDGE + NOSE_TIP + LEFT_EYE + RIGHT_EYE + TOP_LIP + BOTTOM_LIP) 
+const int CHIN          = 17;   // 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
+const int LEFT_EYEBROW  =  5;   //  5 * (a, b)
+const int RIGHT_EYEBROW =  5;   //  5 * (a, b)
+const int NOSE_BRIDGE   =  4;   //  4 * (a, b)
+const int NOSE_TIP      =  5;   //  5 * (a, b)
+const int LEFT_EYE      =  6;   //  6 * (a, b)
+const int RIGHT_EYE     =  6;   //  6 * (a, b)
+const int TOP_LIP       = 12;   // 12 * (a, b)
+const int BOTTOM_LIP    = 12;   // 12 * (a, b)
+const int LIP_DIST         = 12;
+const int EYE_EYEBROW_DIST  = 5;
+const int NOSE_DIST         = 4;
+const int STEP = 2 * (CHIN + LEFT_EYEBROW + RIGHT_EYEBROW + NOSE_BRIDGE + NOSE_TIP + LEFT_EYE + RIGHT_EYE + TOP_LIP + BOTTOM_LIP);
 
 // vector to store the data of the facial features to learn from
 std::vector<int> learning_data;
@@ -63,36 +63,38 @@ void PopulateFacialFeaturesVectors()
 {
 	// the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
 	// by 144 to get the number of pictures examined.
-	std::cout << "learning_data size: " << floor(learning_data.size() / 144) << std::endl;
+	std::cout << "STEP: " << STEP << std::endl;
+	std::cout << "learning_data size / STEP: " << learning_data.size() / STEP << std::endl;
 	// for the same reason we increase 'i' by 144
-	for (int i = 0; i < learning_data.size(); i += 144)
+	int i = 0;
+	for (; i < learning_data.size() / STEP;)
 	{
 		// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
 		//for (int i = 0; i < 34; i++) 
-		for (int i = CHIN * 2; i < (CHIN * 2 + LEFT_EYEBROW * 2); i++) // we need to multiply by 2 to get all the data since it's a 1D array
+		for (; i < (CHIN * 2); i++) // we need to multiply by 2 to get all the data since it's a 1D array
 			// create a vector of chin positions
 			chin.push_back(learning_data.at(i));
 
 		// left eyebrow (5) [18]
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
-		for (int i = 34; i < 44; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2); i++)
 			left_eyebrow.push_back(learning_data.at(i));
 
 		// right_eyebrow (5) [23]
 		//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
-		for (int i = 44; i < 54; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2); i++)
 			right_eyebrow.push_back(learning_data.at(i));
 
 		// nose_bridge (4) [28]
 		//std::cout << "nose bridge" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
-		for (int i = 54; i < 62; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2); i++)
 			nose_bridge.push_back(learning_data.at(i));
 
 		// nose_tip (5) [32]
 		//std::cout << "nose tip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
-		for (int i = 62; i < 72; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2); i++)
 		{
 			nose_tip.push_back(learning_data.at(i));
 		}
@@ -100,27 +102,28 @@ void PopulateFacialFeaturesVectors()
 		// left_eye (6) [37]
 		//std::cout << "left eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
-		for (int i = 72; i < 84; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2); i++)
 			left_eye.push_back(learning_data.at(i));
 
 		// right_eye (6) [43]
 		//std::cout << "right eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
-		for (int i = 84; i < 96; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2); i++)
 			right_eye.push_back(learning_data.at(i));
 
 		// top_lip (12) [49]
 		//std::cout << "top lip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
 		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
-		for (int i = 96; i < 120; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2); i++)
 			top_lip.push_back(learning_data.at(i));
 
 		// bottom_lip (12) [61]
 		//std::cout << "bottom lip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
 		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
-		for (int i = 120; i < 144; i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2 + 
+			BOTTOM_LIP * 2); i++)
 			bottom_lip.push_back(learning_data.at(i));
 	}
 }
@@ -239,12 +242,11 @@ void CalculateEmotionWeightingsForSmile()
 
 int main()
 {
-	std::cout << "STEP: " << STEP << std::endl;
 	GenerateLearningVectorFromAFile();
 
 	PopulateFacialFeaturesVectors();
 
-	CalculateEmotionWeightingsForSmile();
+	//CalculateEmotionWeightingsForSmile();
 
 	DisplayFacialFeaturesVectors();
 
@@ -264,3 +266,4 @@ int main()
 
 	std::cin.get();
 }
+
