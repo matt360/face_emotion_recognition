@@ -5,15 +5,15 @@
 #include <fstream>
 #include <vector>
 
-#define CHIN 17
-#define LEFT_EYEBROW 5
-#define RIGHT_EYEBROW 5
-#define NOSE_BRIDGE 4
-#define NOSE_TIP 5
-#define LEFT_EYE 6
-#define RIGHT_EYE 6
-#define TOP_LIP 12
-#define BOTTOM_LIP 12
+#define CHIN          17   // 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
+#define LEFT_EYEBROW   5   //  5 * (a, b)
+#define RIGHT_EYEBROW  5   //  5 * (a, b)
+#define NOSE_BRIDGE    4   //  4 * (a, b)
+#define NOSE_TIP       5   //  5 * (a, b)
+#define LEFT_EYE       6   //  6 * (a, b)
+#define RIGHT_EYE      6   //  6 * (a, b)
+#define TOP_LIP       12   // 12 * (a, b)
+#define BOTTOM_LIP    12   // 12 * (a, b)
 
 std::ofstream m_Smile;
 
