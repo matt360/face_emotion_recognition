@@ -28,12 +28,10 @@ int main()
 	// [^,], ^ -it inverts logic , means match any string that does not contain comma then last , says to match comma that terminated previous string.
 	*/
 
-	m_Smile.open("smile_learning.csv");
+	// std::ios_bas::app - All output operations happen at the end of the file, appending to its existing contents.
+	m_Smile.open("smile_learning.csv", std::ios_base::app);
 
-	FILE *fp;
-	char str1[10], str2[10];
-	std::vector<int> learning_data;
-
+	// face features vectors (stack memory)
 	std::vector<int> chin;
 	std::vector<int> left_eyebrow;
 	std::vector<int> right_eyebrow;
@@ -49,10 +47,9 @@ int main()
 	std::vector<int> right_eyebrow_right_eye_distance;
 	*/
 
-
-
-
-
+	FILE *fp;
+	char str1[10], str2[10];
+	std::vector<int> learning_data;
 
 	fp = fopen("../../smile.csv", "r");
 	if (NULL == fp)
@@ -94,8 +91,8 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
-				
-				//m_Smile << learning_data.at(i) - learning_data.at(i + 1) << std::endl;
+				// create a vector of chin positions
+				std::vector<int> chin;
 			}
 			// left eyebrow (5) [18]
 			std::cout << "left eyebrow" << std::endl;
@@ -103,6 +100,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> left_eyebrow;
 			}
 			// right_eyebrow (5) [23]
 			std::cout << "right eyebrow" << std::endl;
@@ -110,6 +108,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> right_eyebrow;
 			}
 			// nose_bridge (4) [28]
 			std::cout << "nose bridge" << std::endl;
@@ -117,6 +116,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> nose_bridge;
 			}
 			// nose_tip (5) [32]
 			std::cout << "nose tip" << std::endl;
@@ -124,6 +124,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> nose_tip;
 			}
 			// left_eye (6) [37]
 			std::cout << "left eye" << std::endl;
@@ -131,6 +132,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> left_eye;
 			}
 			// right_eye (6) [43]
 			std::cout << "right eye" << std::endl;
@@ -138,6 +140,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> right_eye;
 			}
 			// top_lip (12) [49]
 			std::cout << "top lip" << std::endl;
@@ -145,6 +148,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> top_lip;
 			}
 			// bottom_lip (12) [61]
 			std::cout << "bottom lip" << std::endl;
@@ -152,6 +156,7 @@ int main()
 			{
 				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
+				std::vector<int> bottom_lip;
 			}
 
 			// data in the facial_recognition algorithm has a layout:
@@ -180,6 +185,10 @@ int main()
 		//}
 
 	}
+
+	// append emotion weighted values (emv) for the smile
+	// if (emv != any set of values in the file)
+	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 
 	m_Smile.close();
 
