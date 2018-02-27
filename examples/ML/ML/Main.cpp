@@ -32,11 +32,11 @@ int main()
 	std::vector<int> right_eye;
 	std::vector<int> top_lip;
 	std::vector<int> bottom_lip;
-	/*
+	// emotion weighted values (emv)
 	std::vector<int> top_lip_bottom_lip_distance;
 	std::vector<int> left_eyebrow_left_eye_distance;
 	std::vector<int> right_eyebrow_right_eye_distance;
-	*/
+	std::vector<int> nose_tip_nose_bridge_distance;
 
 	// file to store the .csv 
 	FILE *fp;
