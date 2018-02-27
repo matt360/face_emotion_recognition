@@ -76,125 +76,121 @@ int main()
 
 	for (int i = 0; i < learning_data.size(); i += 144)
 	{
-		//for (int j = 0; j < 72 * 2; j++)
-		//{
-			/*
-			if (j % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
-				std::cout << "even j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
-			else // place in the learning data vector is odd (1, 3, 5 ... 13)
-				std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
-			*/
+		/*
+		if (j % 2 == 0) // place in the learning data vector is even (0, 2, 4 ... 10)
+			std::cout << "even j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
+		else // place in the learning data vector is odd (1, 3, 5 ... 13)
+			std::cout << "odd  j: " << j << " learning_data: " << learning_data.at(j) << std::endl;
+		*/
 
-			// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
-			std::cout << "chin" << std::endl;
-			//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
-			for (int i = 0; i < 34; i++) // we need to multiply it by 2 to get all the data since it's a 1D array
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				// create a vector of chin positions
-				chin.push_back(learning_data.at(i));
-			}
-			// left eyebrow (5) [18]
-			std::cout << "left eyebrow" << std::endl;
-			//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
-			for (int i = 34; i < 44; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				left_eyebrow.push_back(learning_data.at(i));;
-			}
-			// right_eyebrow (5) [23]
-			std::cout << "right eyebrow" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
-			for (int i = 44; i < 54; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				right_eyebrow.push_back(learning_data.at(i));;;
-			}
-			// nose_bridge (4) [28]
-			std::cout << "nose bridge" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
-			for (int i = 54; i < 62; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				nose_bridge.push_back(learning_data.at(i));
-			}
-			// nose_tip (5) [32]
-			std::cout << "nose tip" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
-			for (int i = 62; i < 72; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				nose_tip.push_back(learning_data.at(i));
-			}
-			// left_eye (6) [37]
-			std::cout << "left eye" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
-			for (int i = 72; i < 84; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				left_eye.push_back(learning_data.at(i));
-			}
-			// right_eye (6) [43]
-			std::cout << "right eye" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
-			for (int i = 84; i < 96; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				right_eye.push_back(learning_data.at(i));
-			}
-			// top_lip (12) [49]
-			std::cout << "top lip" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
-			//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
-			for (int i = 96; i < 120; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				top_lip.push_back(learning_data.at(i));
-			}
-			// bottom_lip (12) [61]
-			std::cout << "bottom lip" << std::endl;
-			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
-			//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
-			for (int i = 120; i < 144; i++)
-			{
-				/*std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;*/
-				bottom_lip.push_back(learning_data.at(i));
-			}
+		// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
+		std::cout << "chin" << std::endl;
+		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
+		for (int i = 0; i < 34; i++) // we need to multiply it by 2 to get all the data since it's a 1D array
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			// create a vector of chin positions
+			chin.push_back(learning_data.at(i));
+		}
+		// left eyebrow (5) [18]
+		std::cout << "left eyebrow" << std::endl;
+		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
+		for (int i = 34; i < 44; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			left_eyebrow.push_back(learning_data.at(i));;
+		}
+		// right_eyebrow (5) [23]
+		std::cout << "right eyebrow" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
+		for (int i = 44; i < 54; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			right_eyebrow.push_back(learning_data.at(i));;;
+		}
+		// nose_bridge (4) [28]
+		std::cout << "nose bridge" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
+		for (int i = 54; i < 62; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			nose_bridge.push_back(learning_data.at(i));
+		}
+		// nose_tip (5) [32]
+		std::cout << "nose tip" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
+		for (int i = 62; i < 72; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			nose_tip.push_back(learning_data.at(i));
+		}
+		// left_eye (6) [37]
+		std::cout << "left eye" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
+		for (int i = 72; i < 84; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			left_eye.push_back(learning_data.at(i));
+		}
+		// right_eye (6) [43]
+		std::cout << "right eye" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
+		for (int i = 84; i < 96; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			right_eye.push_back(learning_data.at(i));
+		}
+		// top_lip (12) [49]
+		std::cout << "top lip" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
+		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
+		for (int i = 96; i < 120; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			top_lip.push_back(learning_data.at(i));
+		}
+		// bottom_lip (12) [61]
+		std::cout << "bottom lip" << std::endl;
+		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
+		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
+		for (int i = 120; i < 144; i++)
+		{
+			/*std::cout << learning_data.at(i) << ", ";
+			std::cout << learning_data.at(i + 1) << std::endl;*/
+			bottom_lip.push_back(learning_data.at(i));
+		}
 
-			// data in the facial_recognition algorithm has a layout:
-			/*
-			'chin',          17 * (a, b)
-			'left_eyebrow',  5 * (a, b)
-			'right_eyebrow', 5 * (a, b)
-			'nose_bridge',   4 * (a, b)
-			'nose_tip',      5 * (a, b)
-			'left_eye',      6 * (a, b)
-			'right_eye',     6 * (a, b)
-			'top_lip',       12 * (a, b)
-			'bottom_lip'     12 * (a, b)
-			*/
-			// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
-			// a distance of the left_eyebrow from the left_eye 
-			// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
-			// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
-			//                                                      
-			// a distance of the right_eyebrow from the right_eye 
-			// 5 - 6 (
-			// a distance of the top_lip from the bottom_lip
-			// 12 - 12
-			// nose tip - nose bridge
-			// 5 - 4
-		//}
-
+		// data in the facial_recognition algorithm has a layout:
+		/*
+		'chin',          17 * (a, b)
+		'left_eyebrow',  5 * (a, b)
+		'right_eyebrow', 5 * (a, b)
+		'nose_bridge',   4 * (a, b)
+		'nose_tip',      5 * (a, b)
+		'left_eye',      6 * (a, b)
+		'right_eye',     6 * (a, b)
+		'top_lip',       12 * (a, b)
+		'bottom_lip'     12 * (a, b)
+		*/
+		// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
+		// a distance of the left_eyebrow from the left_eye 
+		// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
+		// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
+		//                                                      
+		// a distance of the right_eyebrow from the right_eye 
+		// 5 - 6 (
+		// a distance of the top_lip from the bottom_lip
+		// 12 - 12
+		// nose tip - nose bridge
+		// 5 - 4
 	}
 
 	// append emotion weighted values (emv) for the smile
