@@ -72,7 +72,7 @@ int main()
 
 	// the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
 	// by 144 to get the number of pictures examined.
-	std::cout << "size: " << floor(learning_data.size() / 144) << std::endl;
+	std::cout << "learning_data size: " << floor(learning_data.size() / 144) << std::endl;
 
 	for (int i = 0; i < learning_data.size(); i += 144)
 	{
@@ -84,7 +84,7 @@ int main()
 		*/
 
 		// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
-		std::cout << "chin" << std::endl;
+		//std::cout << "chin" << std::endl;
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 		for (int i = 0; i < 34; i++) // we need to multiply it by 2 to get all the data since it's a 1D array
 		{
@@ -94,7 +94,7 @@ int main()
 			chin.push_back(learning_data.at(i));
 		}
 		// left eyebrow (5) [18]
-		std::cout << "left eyebrow" << std::endl;
+		//std::cout << "left eyebrow" << std::endl;
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 		for (int i = 34; i < 44; i++)
 		{
@@ -103,7 +103,7 @@ int main()
 			left_eyebrow.push_back(learning_data.at(i));;
 		}
 		// right_eyebrow (5) [23]
-		std::cout << "right eyebrow" << std::endl;
+		//std::cout << "right eyebrow" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
 		for (int i = 44; i < 54; i++)
 		{
@@ -112,7 +112,7 @@ int main()
 			right_eyebrow.push_back(learning_data.at(i));;;
 		}
 		// nose_bridge (4) [28]
-		std::cout << "nose bridge" << std::endl;
+		//std::cout << "nose bridge" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
 		for (int i = 54; i < 62; i++)
 		{
@@ -121,7 +121,7 @@ int main()
 			nose_bridge.push_back(learning_data.at(i));
 		}
 		// nose_tip (5) [32]
-		std::cout << "nose tip" << std::endl;
+		//std::cout << "nose tip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
 		for (int i = 62; i < 72; i++)
 		{
@@ -130,7 +130,7 @@ int main()
 			nose_tip.push_back(learning_data.at(i));
 		}
 		// left_eye (6) [37]
-		std::cout << "left eye" << std::endl;
+		//std::cout << "left eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
 		for (int i = 72; i < 84; i++)
 		{
@@ -139,7 +139,7 @@ int main()
 			left_eye.push_back(learning_data.at(i));
 		}
 		// right_eye (6) [43]
-		std::cout << "right eye" << std::endl;
+		//std::cout << "right eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
 		for (int i = 84; i < 96; i++)
 		{
@@ -148,7 +148,7 @@ int main()
 			right_eye.push_back(learning_data.at(i));
 		}
 		// top_lip (12) [49]
-		std::cout << "top lip" << std::endl;
+		//std::cout << "top lip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
 		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
 		for (int i = 96; i < 120; i++)
@@ -158,7 +158,7 @@ int main()
 			top_lip.push_back(learning_data.at(i));
 		}
 		// bottom_lip (12) [61]
-		std::cout << "bottom lip" << std::endl;
+		//std::cout << "bottom lip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
 		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
 		for (int i = 120; i < 144; i++)
@@ -198,40 +198,39 @@ int main()
 	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 
 	// 'chin', 17 * (a, b)
-	std::cout << "chin" << std::endl;
-	std::cout << "size: " << chin.size() % 17 << std::endl; // 0 means its okay
+	std::cout << "chin " << "size: " << chin.size() % 17 << std::endl; // 0 means its okay
 	for (int i = 0; i < 17 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
 	// 'left_eyebrow', 5 * (a, b)
-	std::cout << "left_eyebrow" << std::endl;
+	std::cout << "left_eyebrow" << "size: " << left_eyebrow.size() % 5 << std::endl;
 	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << left_eyebrow.at(i) << ", " << left_eyebrow.at(i + 1) << std::endl;
 	// 'right_eyebrow', 5 * (a, b)
-	std::cout << "right_eyebrow" << std::endl;
+	std::cout << "right_eyebrow" << "size: " << left_eyebrow.size() % 5 << std::endl;
 	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << right_eyebrow.at(i) << ", " << right_eyebrow.at(i + 1) << std::endl;
 	// 'nose_bridge', 4 * (a, b)
-	std::cout << "nose_bridge" << std::endl;
+	std::cout << "nose_bridge" << "size: " << nose_bridge.size() % 4 << std::endl;
 	for (int i = 0; i < 4 * 2; i += 2)
 		std::cout << nose_bridge.at(i) << ", " << nose_bridge.at(i + 1) << std::endl;
 	// 'nose_tip', 5 * (a, b)
-	std::cout << "nose_tip" << std::endl;
+	std::cout << "nose_tip" << "size: " << nose_tip.size() % 5 << std::endl;
 	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << nose_tip.at(i) << ", " << nose_tip.at(i + 1) << std::endl;
 	// 'left_eye', 6 * (a, b)
-	std::cout << "left_eye" << std::endl;
+	std::cout << "left_eye" << "size: " << left_eye.size() % 6 << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << left_eye.at(i) << ", " << left_eye.at(i + 1) << std::endl;
 	// 'right_eye', 6 * (a, b)
-	std::cout << "right_eye" << std::endl;
+	std::cout << "right_eye" << "size: " << right_eye.size() % 6 << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << right_eye.at(i) << ", " << right_eye.at(i + 1) << std::endl;
 	// 'top_lip', 12 * (a, b)
-	std::cout << "top_lip" << std::endl;
+	std::cout << "top_lip" << "size: " << top_lip.size() % 12 << std::endl;
 	for (int i = 0; i < 12 * 2; i += 2)
 		std::cout << top_lip.at(i) << ", " << top_lip.at(i + 1) << std::endl;
 	// 'bottom_lip', 12 * (a, b)
-	std::cout << "bottom_lip" << std::endl;
+	std::cout << "bottom_lip" << "size: " << bottom_lip.size() % 12 << std::endl;
 	for (int i = 0; i < 12 * 2; i += 2)
 		std::cout << bottom_lip.at(i) << ", " << bottom_lip.at(i + 1) << std::endl;
 
