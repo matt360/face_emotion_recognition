@@ -208,35 +208,35 @@ int main()
 	// 'left_eyebrow', 5 * (a, b)
 	std::cout << "left_eyebrow" << std::endl;
 	for (int i = 0; i < 5 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << left_eyebrow.at(i) << ", " << left_eyebrow.at(i + 1) << std::endl;
 	// 'right_eyebrow', 5 * (a, b)
 	std::cout << "right_eyebrow" << std::endl;
 	for (int i = 0; i < 5 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << right_eyebrow.at(i) << ", " << right_eyebrow.at(i + 1) << std::endl;
 	// 'nose_bridge', 4 * (a, b)
 	std::cout << "nose_bridge" << std::endl;
 	for (int i = 0; i < 4 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << nose_bridge.at(i) << ", " << nose_bridge.at(i + 1) << std::endl;
 	// 'nose_tip', 5 * (a, b)
 	std::cout << "nose_tip" << std::endl;
 	for (int i = 0; i < 4 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << nose_tip.at(i) << ", " << nose_tip.at(i + 1) << std::endl;
 	// 'left_eye', 6 * (a, b)
 	std::cout << "left_eye" << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << left_eye.at(i) << ", " << left_eye.at(i + 1) << std::endl;
 	// 'right_eye', 6 * (a, b)
 	std::cout << "right_eye" << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << right_eye.at(i) << ", " << right_eye.at(i + 1) << std::endl;
 	// 'top_lip', 12 * (a, b)
 	std::cout << "top_lip" << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << top_lip.at(i) << ", " << top_lip.at(i + 1) << std::endl;
 	// 'bottom_lip'     12 * (a, b)
 	std::cout << "bottom_lip" << std::endl;
 	for (int i = 0; i < 6 * 2; i += 2)
-		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+		std::cout << bottom_lip.at(i) << ", " << bottom_lip.at(i + 1) << std::endl;
 
 	m_Smile.close();
 
