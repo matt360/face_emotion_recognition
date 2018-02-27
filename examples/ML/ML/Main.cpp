@@ -15,8 +15,6 @@
 #define TOP_LIP       12   // 12 * (a, b)
 #define BOTTOM_LIP    12   // 12 * (a, b)
 
-std::ofstream m_Smile;
-
 // vector to store the data of the facial features to learn from
 std::vector<int> learning_data;
 
@@ -161,20 +159,18 @@ void DisplayFacialFeaturesVectors()
 		std::cout << bottom_lip.at(i) << ", " << bottom_lip.at(i + 1) << std::endl;
 }
 
-int main()
+// emotion weighted values (emv)
+std::vector<int> top_lip_bottom_lip_distance;
+std::vector<int> left_eyebrow_left_eye_distance;
+std::vector<int> right_eyebrow_right_eye_distance;
+std::vector<int> nose_tip_nose_bridge_distance;
+// to store smile weightings
+std::ofstream m_Smile;
+
+void CalculateEmotionWeightingsForSmile()
 {
-	// std::ios_bas::app - All output operations happen at the end of the file, appending to its existing contents.
+	// std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
 	m_Smile.open("smile_learning.csv", std::ios_base::app);
-
-	// emotion weighted values (emv)
-	std::vector<int> top_lip_bottom_lip_distance;
-	std::vector<int> left_eyebrow_left_eye_distance;
-	std::vector<int> right_eyebrow_right_eye_distance;
-	std::vector<int> nose_tip_nose_bridge_distance;
-
-	GenerateLearningVectorFromAFile();
-
-	PopulateFacialFeaturesVectors();
 
 	// data in the facial_recognition algorithm has a layout:
 	/*
@@ -202,8 +198,33 @@ int main()
 	// append emotion weighted values (emv) for the smile
 	// if (emv != any set of values in the file)
 	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
+}
 
-	DisplayFacialFeaturesVectors(); 
+int main()
+{
+	
+
+	
+
+	GenerateLearningVectorFromAFile();
+
+	PopulateFacialFeaturesVectors();
+
+	CalculateEmotionWeightingsForSmile();
+
+	DisplayFacialFeaturesVectors();
+
+	/*
+	Check emtion from a picture:
+		- Read facial features of a single face from a file
+		- Create an emotion weighted vector
+		- Read emotion weighted vectors from a file (in a group of 3)
+		- Create emotion weighted vectors (in a group of 3)
+		- Compare the emotion weighted vector (of a single face) with the emotion weighted vectors (created from the learning file), 
+		like smile_weightings_vector, sad_weightenings_vector ect.
+		- The one with the least score is the most likely to be that emotion:
+		smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
+	*/
 
 	m_Smile.close();
 
