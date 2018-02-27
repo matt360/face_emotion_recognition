@@ -191,14 +191,23 @@ void CalculateEmotionWeightingsForSmile()
 	// a distance of the left_eyebrow from the left_eye :
 	// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
 	// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
-	for (int i = 0; i < )
-	top_lip_bottom_lip_distance.push_back();
+	if (left_eyebrow.size() == left_eye.size())
+		for (int i = 0; i < left_eyebrow.size(); i++)
+			left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
 	// a distance of the right_eyebrow from the right_eye: 
-	// 5 - 6
+	if (right_eyebrow.size() == right_eye.size())
+		for (int i = 0; i < EYE_EYEBROW_DIST; i++)
+			right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
 	// a distance of the top_lip from the bottom_lip:
+	if (top_lip.size() == bottom_lip.size())
+		for (int i = 0; i < LIP_DIST; i++)
+			top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
 	// 12 - 12
 	// nose tip - nose bridge:
-	// 5 - 4
+	if (nose_tip.size() == nose_bridge.size())
+		for (int i = 0; i < nose_tip.size(); i++)
+			nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
+
 	// append emotion weighted values for smile into the file
 	// if (emv != any set of values in the file)
 	m_SmileWeightings << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
