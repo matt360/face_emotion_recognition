@@ -87,12 +87,12 @@ int main()
 
 			// chin (17) [1] - (number of elements for the facial feature) [place in the .csv file + i]
 			std::cout << "chin" << std::endl;
-			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
+			for (int i = 0; i < 34; i++) // we need to multiply it by 2 to get all the data since it's a 1D array
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				// create a vector of chin positions
-				std::vector<int> chin;
+				chin.push_back(learning_data.at(i));
 			}
 			// left eyebrow (5) [18]
 			std::cout << "left eyebrow" << std::endl;
@@ -189,6 +189,13 @@ int main()
 	// append emotion weighted values (emv) for the smile
 	// if (emv != any set of values in the file)
 	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
+
+	/*
+	// display chin values
+	std::cout << "CHIN" << std::endl;
+	for (int i = 0; i < 17 * 2; i += 2)
+		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
+	*/
 
 	m_Smile.close();
 
