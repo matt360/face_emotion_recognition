@@ -201,36 +201,42 @@ int main()
 	// if (emv != any set of values in the file)
 	m_Smile << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 
-	
-	// display chin values
-	std::cout << "cin" << std::endl;
+	// 'chin', 17 * (a, b)
+	std::cout << "chin" << std::endl;
 	for (int i = 0; i < 17 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'left_eyebrow', 5 * (a, b)
+	std::cout << "left_eyebrow" << std::endl;
+	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'right_eyebrow', 5 * (a, b)
+	std::cout << "right_eyebrow" << std::endl;
+	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'nose_bridge', 4 * (a, b)
+	std::cout << "nose_bridge" << std::endl;
+	for (int i = 0; i < 4 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'nose_tip', 5 * (a, b)
+	std::cout << "nose_tip" << std::endl;
+	for (int i = 0; i < 4 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'left_eye', 6 * (a, b)
+	std::cout << "left_eye" << std::endl;
+	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'right_eye', 6 * (a, b)
+	std::cout << "right_eye" << std::endl;
+	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'top_lip', 12 * (a, b)
+	std::cout << "top_lip" << std::endl;
+	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	std::cout << "cin" << std::endl;
-	for (int i = 0; i < 17 * 2; i += 2)
+	// 'bottom_lip'     12 * (a, b)
+	std::cout << "bottom_lip" << std::endl;
+	for (int i = 0; i < 6 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
-	
 
 	m_Smile.close();
 
