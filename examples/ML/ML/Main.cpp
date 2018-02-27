@@ -203,6 +203,7 @@ int main()
 
 	// 'chin', 17 * (a, b)
 	std::cout << "chin" << std::endl;
+	std::cout << "size: " << chin.size() % 17 << std::endl; // 0 means its okay
 	for (int i = 0; i < 17 * 2; i += 2)
 		std::cout << chin.at(i) << ", " << chin.at(i + 1) << std::endl;
 	// 'left_eyebrow', 5 * (a, b)
