@@ -33,9 +33,26 @@ int main()
 	FILE *fp;
 	char str1[10], str2[10];
 	std::vector<int> learning_data;
+
+	std::vector<int> chin;
+	std::vector<int> left_eyebrow;
+	std::vector<int> right_eyebrow;
+	std::vector<int> nose_bridge;
+	std::vector<int> nose_tip;
+	std::vector<int> left_eye;
+	std::vector<int> right_eye;
+	std::vector<int> top_lip;
+	std::vector<int> bottom_lip;
+	/*
 	std::vector<int> top_lip_bottom_lip_distance;
 	std::vector<int> left_eyebrow_left_eye_distance;
 	std::vector<int> right_eyebrow_right_eye_distance;
+	*/
+
+
+
+
+
 
 	fp = fopen("../../smile.csv", "r");
 	if (NULL == fp)
