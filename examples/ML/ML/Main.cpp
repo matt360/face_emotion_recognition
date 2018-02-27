@@ -106,20 +106,20 @@ int main()
 			}
 			// right_eyebrow (5) [23]
 			std::cout << "right eyebrow" << std::endl;
-			for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
-				for (int i = 44; i < 54; i++)
-				{
-					std::cout << learning_data.at(i) << ", ";
-					std::cout << learning_data.at(i + 1) << std::endl;
-					right_eyebrow.push_back(learning_data.at(i));;;
-				}
+			//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
+			for (int i = 44; i < 54; i++)
+			{
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
+				right_eyebrow.push_back(learning_data.at(i));;;
+			}
 			// nose_bridge (4) [28]
 			std::cout << "nose bridge" << std::endl;
 			//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
 			for (int i = 54; i < 62; i++)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				nose_bridge.push_back(learning_data.at(i));
 			}
 			// nose_tip (5) [32]
@@ -127,8 +127,8 @@ int main()
 			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
 			for (int i = 62; i < 72; i++)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				nose_tip.push_back(learning_data.at(i));
 			}
 			// left_eye (6) [37]
@@ -136,33 +136,33 @@ int main()
 			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
 			for (int i = 72; i < 84; i++)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				left_eye.push_back(learning_data.at(i));
 			}
 			// right_eye (6) [43]
 			std::cout << "right eye" << std::endl;
 			//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
-			for (int i = 84; i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
+			for (int i = 84; i < 96; i++)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				right_eye.push_back(learning_data.at(i));
 			}
 			// top_lip (12) [49]
 			std::cout << "top lip" << std::endl;
-			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
+			for (int i = 96; i < 120; i++)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				std::vector<int> top_lip;
 			}
 			// bottom_lip (12) [61]
 			std::cout << "bottom lip" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
 			{
-				std::cout << learning_data.at(i) << ", ";
-				std::cout << learning_data.at(i + 1) << std::endl;
+				/*std::cout << learning_data.at(i) << ", ";
+				std::cout << learning_data.at(i + 1) << std::endl;*/
 				std::vector<int> bottom_lip;
 			}
 
