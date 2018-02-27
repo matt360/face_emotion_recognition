@@ -67,34 +67,34 @@ void PopulateFacialFeaturesVectors()
 	std::cout << "learning_data size / STEP: " << learning_data.size() / STEP << std::endl;
 	// for the same reason we increase 'i' by 144
 	int i = 0;
-	for (; i < learning_data.size() / STEP;)
+	for (int j = 0; j < learning_data.size() / STEP; j++)
 	{
 		// chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
 		//for (int i = 0; i < 34; i++) 
-		for (; i < (CHIN * 2); i++) // we need to multiply by 2 to get all the data since it's a 1D array
+		for (; i < (CHIN * 2) + j * STEP; i++) // we need to multiply by 2 to get all the data since it's a 1D array
 			// create a vector of chin positions
 			chin.push_back(learning_data.at(i));
 
 		// left eyebrow (5) [18]
 		//for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2) + j * STEP; i++)
 			left_eyebrow.push_back(learning_data.at(i));
 
 		// right_eyebrow (5) [23]
 		//for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2) + j * STEP; i++)
 			right_eyebrow.push_back(learning_data.at(i));
 
 		// nose_bridge (4) [28]
 		//std::cout << "nose bridge" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2) + j * STEP; i++)
 			nose_bridge.push_back(learning_data.at(i));
 
 		// nose_tip (5) [32]
 		//std::cout << "nose tip" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2) + j * STEP; i++)
 		{
 			nose_tip.push_back(learning_data.at(i));
 		}
@@ -102,30 +102,33 @@ void PopulateFacialFeaturesVectors()
 		// left_eye (6) [37]
 		//std::cout << "left eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2) + j * STEP; i++)
 			left_eye.push_back(learning_data.at(i));
 
 		// right_eye (6) [43]
 		//std::cout << "right eye" << std::endl;
 		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2); i++)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2) + j * STEP; i++)
 			right_eye.push_back(learning_data.at(i));
 
 		// top_lip (12) [49]
 		//std::cout << "top lip" << std::endl;
-		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); 
-		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
-		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2); i++)
+		//for (; i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
+		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2) + 
+			j * STEP; i++)
 			top_lip.push_back(learning_data.at(i));
 
 		// bottom_lip (12) [61]
 		//std::cout << "bottom lip" << std::endl;
-		//for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); 
-		//     i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
+		//for (; i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 *  2); i += 2)
 		for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2 + 
-			BOTTOM_LIP * 2); i++)
+			BOTTOM_LIP * 2) + j * STEP; i++)
 			bottom_lip.push_back(learning_data.at(i));
 	}
+	// check if populating vectors with facial features went ok. The sizes of all vector features added together should equal 'i'
+	if (i == chin.size() + left_eyebrow.size() + right_eyebrow.size() + nose_bridge.size() + nose_tip.size() + left_eye.size() + right_eye.size() +
+		top_lip.size() + bottom_lip.size())
+		std::cout << "Papulating Facial Features Vectors went OK!" << std::endl;
 }
 
 void DisplayFacialFeaturesVectors()
@@ -199,43 +202,46 @@ void CalculateEmotionWeightingsForSmile()
 	// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
 
 	// a distance from the left_eyebrow to the left_eye: 
-	if (left_eyebrow.size() == left_eye.size())
-		for (int i = 0; i < left_eyebrow.size(); i++)
-			left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
+	//if (left_eyebrow.size() == left_eye.size())
+	for (int i = 0; i < left_eyebrow.size(); i++)
+		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
 
 	// a distance from right_eyebrow to the right_eye: 
-	if (right_eyebrow.size() == right_eye.size())
-		for (int i = 0; i < right_eyebrow.size(); i++)
-			right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
+	//if (right_eyebrow.size() == right_eye.size())
+	for (int i = 0; i < right_eyebrow.size(); i++)
+		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
 
 	// a distance from the top_lip to the bottom_lip:
-	if (top_lip.size() == bottom_lip.size())
-		for (int i = 0; i < top_lip.size(); i++)
-			top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
+	//if (top_lip.size() == bottom_lip.size())
+	for (int i = 0; i < top_lip.size(); i++)
+		top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
 
 	// a distance from the nose tip to the nose bridge:
-	if (nose_tip.size() == nose_bridge.size())
-		for (int i = 0; i < nose_tip.size(); i++)
-			nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
-
+	//if (nose_tip.size() == nose_bridge.size())
+	for (int i = 0; i < nose_tip.size(); i++)
+		nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
 
 
 	// append emotion weighted values for smile into the file
 	// if (emv != any set of values in the file)
 	for (int i = 0; i < left_eyebrow.size(); i++)
+		// (5 - 6)
 		left_eyebrow_left_eye_distance.push_back(left_eyebrow.at(i) - left_eye.at(i));
 
 	// a distance of the right_eyebrow from the right_eye: 
 	for (int i = 0; i < right_eyebrow.size(); i++)
+		// (5 - 6)
 		right_eyebrow_right_eye_distance.push_back(right_eyebrow.at(i) - right_eye.at(i));
 
 	// a distance of the top_lip from the bottom_lip:
 	for (int i = 0; i < top_lip.size(); i++)
+		// (12 - 12)
 		top_lip_bottom_lip_distance.push_back(top_lip.at(i) - bottom_lip.at(i));
 
 	// a distance from the nose tip to the nose bridge:
-	for (int i = 0; i < nose_tip.size(); i++)
-		nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
+	//for (int i = 0; i < nose_tip.size(); i++)
+	//	// (5 - 4)
+	//	nose_tip_nose_bridge_distance.push_back(nose_tip.at(i) - nose_bridge.at(i));
 
 	m_SmileWeightings << 1 << ',' << 2 << ',' << 3 << std::endl; // ',' - makes it go to the next cell in the .csv file
 }
@@ -246,7 +252,7 @@ int main()
 
 	PopulateFacialFeaturesVectors();
 
-	//CalculateEmotionWeightingsForSmile();
+	CalculateEmotionWeightingsForSmile();
 
 	DisplayFacialFeaturesVectors();
 
