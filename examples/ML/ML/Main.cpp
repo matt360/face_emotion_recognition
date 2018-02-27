@@ -70,63 +70,63 @@ int main()
 			std::cout << "chin" << std::endl;
 			for (int i = 0; i < 17 * 2; i += 2) // we need to multiply it by 2 to get all the data since it's a 1D array
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// left eyebrow (5) [18]
 			std::cout << "left eyebrow" << std::endl;
 			for (int i = 17 * 2; i < (17 * 2 + 5 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// right_eyebrow (5) [23]
 			std::cout << "right eyebrow" << std::endl;
 			for (int i = (17 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// nose_bridge (4) [28]
 			std::cout << "nose bridge" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// nose_tip (5) [32]
 			std::cout << "nose tip" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// left_eye (6) [37]
 			std::cout << "left eye" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// right_eye (6) [43]
 			std::cout << "right eye" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// top_lip (12) [49]
 			std::cout << "top lip" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 			// bottom_lip (12) [61]
 			std::cout << "bottom lip" << std::endl;
 			for (int i = (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2); i < (17 * 2 + 5 * 2 + 5 * 2 + 4 * 2 + 5 * 2 + 6 * 2 + 6 * 2 + 12 * 2 + 12 * 2); i += 2)
 			{
-				std::cout << learning_data.at(i) << std::endl;
+				std::cout << learning_data.at(i) << ", ";
 				std::cout << learning_data.at(i + 1) << std::endl;
 			}
 
@@ -144,10 +144,15 @@ int main()
 			*/
 			// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
 			// a distance of the left_eyebrow from the left_eye 
-
+			// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
+			// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
+			//                                                      
 			// a distance of the right_eyebrow from the right_eye 
-
+			// 5 - 6 (
 			// a distance of the top_lip from the bottom_lip
+			// 12 - 12
+			// nose tip - nose bridge
+			// 5 - 4
 		//}
 
 	}
