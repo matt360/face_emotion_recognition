@@ -5,6 +5,16 @@
 #include <fstream>
 #include <vector>
 
+#define CHIN 17
+#define LEFT_EYEBROW 5
+#define RIGHT_EYEBROW 5
+#define NOSE_BRIDGE 4
+#define NOSE_TIP 5
+#define LEFT_EYE 6
+#define RIGHT_EYE 6
+#define TOP_LIP 12
+#define BOTTOM_LIP 12
+
 std::ofstream m_Smile;
 
 int main()
