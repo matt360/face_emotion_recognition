@@ -219,7 +219,7 @@ int main()
 		std::cout << nose_bridge.at(i) << ", " << nose_bridge.at(i + 1) << std::endl;
 	// 'nose_tip', 5 * (a, b)
 	std::cout << "nose_tip" << std::endl;
-	for (int i = 0; i < 4 * 2; i += 2)
+	for (int i = 0; i < 5 * 2; i += 2)
 		std::cout << nose_tip.at(i) << ", " << nose_tip.at(i + 1) << std::endl;
 	// 'left_eye', 6 * (a, b)
 	std::cout << "left_eye" << std::endl;
@@ -231,11 +231,11 @@ int main()
 		std::cout << right_eye.at(i) << ", " << right_eye.at(i + 1) << std::endl;
 	// 'top_lip', 12 * (a, b)
 	std::cout << "top_lip" << std::endl;
-	for (int i = 0; i < 6 * 2; i += 2)
+	for (int i = 0; i < 12 * 2; i += 2)
 		std::cout << top_lip.at(i) << ", " << top_lip.at(i + 1) << std::endl;
-	// 'bottom_lip'     12 * (a, b)
+	// 'bottom_lip', 12 * (a, b)
 	std::cout << "bottom_lip" << std::endl;
-	for (int i = 0; i < 6 * 2; i += 2)
+	for (int i = 0; i < 12 * 2; i += 2)
 		std::cout << bottom_lip.at(i) << ", " << bottom_lip.at(i + 1) << std::endl;
 
 	m_Smile.close();
