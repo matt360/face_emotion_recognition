@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FacialFeatures.h"
+#include "SmileFeatures.h"
 
 class MachineLearning
 {
@@ -12,10 +12,13 @@ public:
     int GenerateLearningVectorFromFile();
 private:
     // classes
-    FacialFeatures facialFeatures;
+   SmileFeatures smileFeatures;
 
     // vector to store the data of the facial features to learn from
     std::vector<int> learning_data;
+
+    // FILES to store .csv's
+    FILE *smile;
 };
 	
 

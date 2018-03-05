@@ -12,7 +12,6 @@ public:
 	FacialFeatures();
 	~FacialFeatures();
 
-    
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
 

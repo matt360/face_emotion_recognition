@@ -10,10 +10,10 @@
 std::vector<int> smile_weightings;
 // to store smile weightings
 std::ofstream m_SmileWeightings;
-void CalculateEmotionWeightingsForSmile()
+void CalculateEmotionWeightingsForSmile(std::ofstream& smileWeightingsFile)
 {
 	// std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
-	m_SmileWeightings.open("smile_learning.csv", std::ios_base::app);
+	smileWeightingsFile.open("smile_learning.csv", std::ios_base::app);
 
 	// data in the facial_recognition algorithm has a layout:
 	/*
@@ -64,7 +64,7 @@ void CalculateEmotionWeightingsForSmile()
 		// (5 - 6)
 		// at the beginning we don't have to adjust for vector size difference
 		smile_weightings.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
-		m_SmileWeightings << left_eyebrow.at(i) - left_eye.at(i + 1) << std::endl;
+		smileWeightingsFile << left_eyebrow.at(i) - left_eye.at(i + 1) << std::endl;
 	}
 
 	// a distance of the right_eyebrow from the right_eye: 
@@ -72,7 +72,7 @@ void CalculateEmotionWeightingsForSmile()
 	{
 		// (5 - 6)
 		smile_weightings.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
-		m_SmileWeightings << right_eyebrow.at(i) - right_eye.at(i + 1) << std::endl;
+		smileWeightingsFile << right_eyebrow.at(i) - right_eye.at(i + 1) << std::endl;
 	}
 
 	// a distance of the top_lip from the bottom_lip:
@@ -80,7 +80,7 @@ void CalculateEmotionWeightingsForSmile()
 	{
 		// (12 - 12)
 		smile_weightings.push_back(top_lip.at(i) - bottom_lip.at(i));
-		m_SmileWeightings << top_lip.at(i) - bottom_lip.at(i) << std::endl;
+		smileWeightingsFile << top_lip.at(i) - bottom_lip.at(i) << std::endl;
 	}
 
 	// a distance from the nose tip to the nose bridge:
@@ -88,7 +88,7 @@ void CalculateEmotionWeightingsForSmile()
 	{
 		// (5 - 4)
 		smile_weightings.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
-		m_SmileWeightings << nose_bridge.at(i) - nose_tip.at(i + 1) << std::endl;
+		smileWeightingsFile << nose_bridge.at(i) - nose_tip.at(i + 1) << std::endl;
 	}
 
 	// if (emv != any set of values in the file)
@@ -184,14 +184,14 @@ void CheckEmotionFromPicture()
 
 int main()
 {
-    FacialFeatures facialFeatures;
-    facialFeatures.GenerateLearningVectorFromFile();
+    //FacialFeatures facialFeatures;
+    //facialFeatures.GenerateLearningVectorFromFile();
 
-    facialFeatures.PopulateFacialFeaturesVectors(learning_data);
+    //facialFeatures.PopulateFacialFeaturesVectors(learning_data);
 
 	CalculateEmotionWeightingsForSmile();
 
-    facialFeatures.DisplayFacialFeaturesVectors();
+    //facialFeatures.DisplayFacialFeaturesVectors();
 
 	CheckEmotionFromPicture();
 

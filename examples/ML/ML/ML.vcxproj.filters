@@ -24,6 +24,12 @@
     <ClCompile Include="FacialFeatures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Emotion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SmileFeatures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MachineLearning.h">
@@ -33,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Consts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Emotion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmileFeatures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

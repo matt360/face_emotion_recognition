@@ -14,38 +14,38 @@ MachineLearning::~MachineLearning()
 int MachineLearning::GenerateLearningVectorFromFile()
 {
     // file to store the .csv 
-    FILE *fp;
+    //FILE *fp;
     // two chars to read from two columns in each row in the .csv file
     char str1[10], str2[10];
 
     // open the .csv file to read the data
-    fp = fopen("../../smile.csv", "r");
+    smile = fopen("../../smile.csv", "r");
     // check if the file was opened correctly
-    if (NULL == fp)
+    if (NULL == smile)
     {
         printf("\nError in opening file.");
         return 0;
     }
 
     // read data into a vector from a .csv file with two columns
-    while (EOF != fscanf(fp, " %[^,], %s, %s ", str1, str2))
+    while (EOF != fscanf(smile, " %[^,], %s, %s ", str1, str2))
     {
         learning_data.push_back(std::stoi(str1));
         learning_data.push_back(std::stoi(str2));
     }
     // close the file after reading the data into the vector
-    fclose(fp);
+    fclose(smile);
 }
 
 void MachineLearning::Learn()
 {
     GenerateLearningVectorFromFile();
 
-    facialFeatures.PopulateFacialFeaturesVectors(learning_data);
+    smileFeatures.PopulateFacialFeaturesVectors(learning_data);
 
     CalculateEmotionWeightingsForSmile();
 
-    facialFeatures.DisplayFacialFeaturesVectors();
+    smileFeatures.DisplayFacialFeaturesVectors();
 }
 
 
