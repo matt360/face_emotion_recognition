@@ -1,6 +1,6 @@
 #pragma warning(disable : 4996)
 
-#include "FacialFeatures.h"
+#include "MachineLearning.h"
 
 std::vector<int> facial_features_from_picture; 
 void CheckEmotionFromPicture()
@@ -80,18 +80,10 @@ void CheckEmotionFromPicture()
 
 int main()
 {
-    //FacialFeatures facialFeatures;
-    //facialFeatures.GenerateLearningVectorFromFile();
-
-    //facialFeatures.PopulateFacialFeaturesVectors(learning_data);
-
-	//CalculateEmotionWeightingsForSmile();
-
-    //facialFeatures.DisplayFacialFeaturesVectors();
-
+    MachineLearning machineLearning;
+    machineLearning.Learn();
+   
 	CheckEmotionFromPicture();
-
-	//m_SmileWeightings.close();
 
 	std::cin.get();
 }
