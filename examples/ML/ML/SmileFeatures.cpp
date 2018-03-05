@@ -6,7 +6,6 @@ SmileFeatures::SmileFeatures()
 
 SmileFeatures::~SmileFeatures()
 {
-    //smileWeightingsFile.close();
 }
 
 // TODO delete

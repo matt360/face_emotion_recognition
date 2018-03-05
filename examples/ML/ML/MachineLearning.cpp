@@ -9,35 +9,39 @@ MachineLearning::~MachineLearning()
 {
 }
 
-int MachineLearning::GenerateLearningVectorFromFile(const char* emotion_learning_file, std::vector<int>& learning_data)
-{
-    // file to store the .csv 
-    FILE *file;
-    // two chars to read from two columns in each row in the .csv file
-    char str1[10], str2[10];
-
-    // open the .csv file to read the data
-    file = fopen(emotion_learning_file, "r");
-    // check if the file was opened correctly
-    if (NULL == file)
-    {
-        printf("\nError in opening file.");
-        return 0;
-    }
-
-    // read data into a vector from a .csv file with two columns
-    while (EOF != fscanf(file, " %[^,], %s, %s ", str1, str2))
-    {
-        learning_data.push_back(std::stoi(str1));
-        learning_data.push_back(std::stoi(str2));
-    }
-    // close the file after reading the data into the vector
-    fclose(file);
-}
+//int MachineLearning::GenerateLearningVectorFromFile(const char* emotion_learning_file, std::vector<int>& learning_data)
+//{
+//    // file to store the .csv 
+//    FILE *file;
+//    // two chars to read from two columns in each row in the .csv file
+//    char str1[10], str2[10];
+//
+//    // open the .csv file to read the data
+//    file = fopen(emotion_learning_file, "r");
+//    // check if the file was opened correctly
+//    if (NULL == file)
+//    {
+//        printf("\nError in opening file.");
+//        return 0;
+//    }
+//
+//    // read data into a vector from a .csv file with two columns
+//    while (EOF != fscanf(file, " %[^,], %s, %s ", str1, str2))
+//    {
+//        learning_data.push_back(std::stoi(str1));
+//        learning_data.push_back(std::stoi(str2));
+//    }
+//    // close the file after reading the data into the vector
+//    fclose(file);
+//}
 
 void MachineLearning::Learn()
 {
-    GenerateLearningVectorFromFile("../../smile.csv", smileFeatures.learning_data);
+    // Learn smile
+    /* first variable is the name of the file that contains features of a certain emotion, second is the name of the file mainly serving debugging purposes so we can check what weightings for a given emotion are */
+    smileFeatures.Learn("../../smile.csv", "smile_weightings.csv");
+    /* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */
+    pictureFeatures.Learn("../../smile_test.csv", "picture_smile_weightings.csv");
 }
 
 void MachineLearning::RecognizeEmotion()
@@ -55,13 +59,15 @@ void MachineLearning::RecognizeEmotion()
     smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
     */
 
-    smileFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
-    smileFeatures.CalculateEmotionWeightings("smile_weightings.csv");
+    // Learn() smile
+    //smileFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
+    //smileFeatures.CalculateEmotionWeightings("smile_weightings.csv");
     //smileFeatures.DisplayFacialFeaturesVectors();
 
     // CHECK FOR SMILE
-    pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
-    pictureFeatures.CalculateEmotionWeightings("picture_smile_weightings.csv");
+    // Learn() picture
+    //pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
+    //pictureFeatures.CalculateEmotionWeightings("picture_smile_weightings.csv");
     //pictureFeatures.DisplayFacialFeaturesVectors();
     int smile_sum = std::accumulate(smileFeatures.weightingsVector.begin(), smileFeatures.weightingsVector.end(), 0);
     int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
@@ -69,12 +75,12 @@ void MachineLearning::RecognizeEmotion()
     std::cout << "smile_prob " << smile_prob << std::endl;
 
     // CHECK FOR SAD
-    pictureFeatures.PopulateFacialFeaturesVectors(sadFeatures.learning_data);
+    /*pictureFeatures.PopulateFacialFeaturesVectors(sadFeatures.learning_data);
     pictureFeatures.CalculateEmotionWeightings("picture_sad_weightings.csv");
     int sad_sum = std::accumulate(sadFeatures.weightingsVector.begin(), sadFeatures.weightingsVector.end(), 0);
     int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
     int sad_prob = smile_sum - picture_sum;
-    std::cout << "sad_prob " << sad_prob << std::endl;
+    std::cout << "sad_prob " << sad_prob << std::endl;*/
 
     // the closer the value is to 0 the more likely it is to be this emotion
     // check for negative values

@@ -1,7 +1,7 @@
 #pragma once
 #include "FacialFeatures.h"
 
-// a class to represent abstarction
+// class to represent abstarction of picture features
 class PictureFeatures : public FacialFeatures
 {
 public:

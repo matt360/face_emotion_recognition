@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable : 4996)
 
 #include <iostream>
 #include <sstream>
@@ -13,6 +14,7 @@ public:
     // virtual destructor ensures that both destructors will be called; of the base and the derived class
 	virtual ~FacialFeatures();
 
+    void PopulateFacialFeaturesVectors();
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
     void CalculateEmotionWeightings(const char* file_name);
@@ -27,11 +29,11 @@ public:
     std::ofstream weightingsFile;
 
 public:
-    // learning variables
-    // FILE to store .csv
-    //FILE** file;
-    // vector to store the data of the facial features to learn from
+    int GenerateLearningVectorFromFile(const char* emotion_learning_file);
+    void Learn(const char* learning_file_name, const char* weightings_file_name);
+    // learning variables - vector to store the data of the facial features to learn from
     std::vector<int> learning_data;
+
 protected:
     // face features vectors (stack memory)
     std::vector<int> chin;
