@@ -117,7 +117,7 @@ void MachineLearning::Learn()
 
     smileFeatures.PopulateFacialFeaturesVectors(learning_data);
 
-    smileFeatures.CalculateEmotionWeightings();
+    smileFeatures.CalculateEmotionWeightings("smile_learning.csv");
 
     smileFeatures.DisplayFacialFeaturesVectors();
 
