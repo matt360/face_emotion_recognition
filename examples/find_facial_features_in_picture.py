@@ -5,7 +5,7 @@ import csv
 # to run the application in the terminal: 'python3 find_facial_features_in_picture.py'
 
 # Load the jpg file into a numpy array
-image = face_recognition.load_image_file("obama-720p.jpg")
+image = face_recognition.load_image_file("smile_test_2.jpg")
 
 # Find all facial features in all the faces in the image
 face_landmarks_list = face_recognition.face_landmarks(image)
@@ -26,18 +26,18 @@ for face_landmarks in face_landmarks_list:
         'top_lip',           # 12 * (a ,b)
         'bottom_lip'         # 12 * (a ,b)
     ]
-    
+
     # print facial features and their positions in the terminal
     # for facial_feature in facial_features:
     #     print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
 
     # save features into a file
     for facial_feature in facial_features:
-        myFile = open('smile.csv', 'a')
+        myFile = open('smile_test_2.csv', 'a')
         with myFile:
             writer = csv.writer(myFile)
             writer.writerows(face_landmarks[facial_feature])
-        
+
     # for facial_feature in facial_features:
     #     a = array(face_landmarks[facial_feature])
 
@@ -59,20 +59,7 @@ for face_landmarks in face_landmarks_list:
     for facial_feature in facial_features:
         d.line(face_landmarks[facial_feature], width=1)
 
-    #pil_image.show()
-
-# TODO delete example
-# myData = [["first_name", "second_name", "Grade"],
-#           ['Alex', 'Brian', 'A'],
-#           ['Tom', 'Smith', 'B']]
-
-# myFile = open('example2.csv', 'w')
-# with myFile:
-#     writer = csv.writer(myFile)
-#     writer.writerows(myData)
-
-# mark picture
-#
+    pil_image.show()
 
 	# emotions ML:
 	# feed picture
