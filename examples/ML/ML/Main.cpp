@@ -5,23 +5,10 @@
 #include <fstream>
 #include <vector>
 
-const int CHIN          = 17;   // 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
-const int LEFT_EYEBROW  =  5;   //  5 * (a, b)
-const int RIGHT_EYEBROW =  5;   //  5 * (a, b)
-const int NOSE_BRIDGE   =  4;   //  4 * (a, b)
-const int NOSE_TIP      =  5;   //  5 * (a, b)
-const int LEFT_EYE      =  6;   //  6 * (a, b)
-const int RIGHT_EYE     =  6;   //  6 * (a, b)
-const int TOP_LIP       = 12;   // 12 * (a, b)
-const int BOTTOM_LIP    = 12;   // 12 * (a, b)
-const int LIP_DIST         = 12;
-const int EYE_EYEBROW_DIST  = 5;
-const int NOSE_DIST         = 4;
-const int STEP = 2 * (CHIN + LEFT_EYEBROW + RIGHT_EYEBROW + NOSE_BRIDGE + NOSE_TIP + LEFT_EYE + RIGHT_EYE + TOP_LIP + BOTTOM_LIP);
+#include "Consts.h"
 
 // vector to store the data of the facial features to learn from
 std::vector<int> learning_data;
-
 int GenerateLearningVectorFromFile()
 {
 	// file to store the .csv 
@@ -47,7 +34,6 @@ int GenerateLearningVectorFromFile()
 	// close the file after reading the data into the vector
 	fclose(fp);
 }
-
 // face features vectors (stack memory)
 std::vector<int> chin;
 std::vector<int> left_eyebrow;
@@ -58,7 +44,6 @@ std::vector<int> left_eye;
 std::vector<int> right_eye;
 std::vector<int> top_lip;
 std::vector<int> bottom_lip;
-
 void PopulateFacialFeaturesVectors(std::vector<int>& learning_data)
 {
 	// the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
@@ -130,7 +115,6 @@ void PopulateFacialFeaturesVectors(std::vector<int>& learning_data)
 		top_lip.size() + bottom_lip.size())
 		std::cout << "Papulating Facial Features Vectors went OK!" << std::endl;
 }
-
 void DisplayFacialFeaturesVectors()
 {
 	// 'chin', 17 * (a, b)
@@ -179,7 +163,6 @@ void DisplayFacialFeaturesVectors()
 std::vector<int> smile_weightings;
 // to store smile weightings
 std::ofstream m_SmileWeightings;
-
 void CalculateEmotionWeightingsForSmile()
 {
 	// std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
@@ -277,7 +260,6 @@ void CalculateEmotionWeightingsForSmile()
 }
 
 std::vector<int> facial_features_from_picture; 
-
 void CheckEmotionFromPicture()
 {
 	/*

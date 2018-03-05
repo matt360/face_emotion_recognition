@@ -1,5 +1,7 @@
 #pragma once
 
+#include "FacialFeatures.h"
+
 class MachineLearning
 {
 public:
