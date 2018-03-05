@@ -288,6 +288,37 @@ void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
     weightingsFile.close();
 }
 
+void FacialFeatures::CalculateEmotionWeightings()
+{
+    for (int i = 0; i < left_eyebrow.size(); i++)
+    {
+        // (5 - 6)
+        // at the beginning we don't have to adjust for vector size difference
+        weightingsVector.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
+    }
+
+    // a distance of the right_eyebrow from the right_eye: 
+    for (int i = 0; i < right_eyebrow.size(); i++)
+    {
+        // (5 - 6)
+        weightingsVector.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
+    }
+
+    // a distance of the top_lip from the bottom_lip:
+    for (int i = 0; i < top_lip.size(); i++)
+    {
+        // (12 - 12)
+        weightingsVector.push_back(top_lip.at(i) - bottom_lip.at(i));
+    }
+
+    // a distance from the nose tip to the nose bridge:
+    for (int i = 0; i < nose_bridge.size(); i++)
+    {
+        // (5 - 4)
+        weightingsVector.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
+    }
+}
+
 int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_file)
 {
     // file to store the .csv 
@@ -320,4 +351,12 @@ void FacialFeatures::Learn(const char* learning_file_name, const char* weighting
 
     PopulateFacialFeaturesVectors();
     CalculateEmotionWeightings(weightings_file_name);
+}
+
+void FacialFeatures::Learn(const char* learning_file_name)
+{
+    GenerateLearningVectorFromFile(learning_file_name);
+
+    PopulateFacialFeaturesVectors();
+    CalculateEmotionWeightings();
 }

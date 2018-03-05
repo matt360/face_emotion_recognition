@@ -1,5 +1,5 @@
 #include "MachineLearning.h"
-#include <numeric>
+#include <algorithm>
 
 MachineLearning::MachineLearning()
 {
@@ -69,9 +69,25 @@ void MachineLearning::RecognizeEmotion()
     //pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
     //pictureFeatures.CalculateEmotionWeightings("picture_smile_weightings.csv");
     //pictureFeatures.DisplayFacialFeaturesVectors();
-    int smile_sum = std::accumulate(smileFeatures.weightingsVector.begin(), smileFeatures.weightingsVector.end(), 0);
-    int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
-    int smile_prob = smile_sum - picture_sum;
+
+    int min = std::min(smileFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size());
+    std::cout << "min = " << min << std::endl;
+    int max = std::max(smileFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size());
+    std::cout << "max = " << max << std::endl;
+    /*std::cout << "pictureFeautres: " << pictureFeatures.weightingsVector.size() << std::endl;
+    std::cout << "smileFeautres: " << smileFeatures.weightingsVector.size() << std::endl;*/
+
+    /*int diff = max - min;
+    std::cout << "diff = " << diff << std::endl;
+
+    int smile_sum = std::accumulate(smileFeatures.weightingsVector.begin(), smileFeatures.weightingsVector.end() - diff, 0);
+    int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);*/
+
+    int smile_prob = 0;
+    for (int i = 0; i < min; i++)
+    {
+        smile_prob += smileFeatures.weightingsVector.at(0) - pictureFeatures.weightingsVector.at(0);
+    }
     std::cout << "smile_prob " << smile_prob << std::endl;
 
     // CHECK FOR SAD

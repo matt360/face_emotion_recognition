@@ -18,6 +18,7 @@ public:
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
     void CalculateEmotionWeightings(const char* file_name);
+    void CalculateEmotionWeightings();
 
     // emotion weighted values (emv)
     //std::vector<int> top_lip_bottom_lip_distance;
@@ -31,6 +32,7 @@ public:
 public:
     int GenerateLearningVectorFromFile(const char* emotion_learning_file);
     void Learn(const char* learning_file_name, const char* weightings_file_name);
+    void Learn(const char * learning_file_name);
     // learning variables - vector to store the data of the facial features to learn from
     std::vector<int> learning_data;
 
