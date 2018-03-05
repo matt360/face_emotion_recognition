@@ -9,9 +9,13 @@ public:
     ~MachineLearning();
 
     void Learn();
-
+    int GenerateLearningVectorFromFile();
 private:
+    // classes
+    FacialFeatures facialFeatures;
 
+    // vector to store the data of the facial features to learn from
+    std::vector<int> learning_data;
 };
 	
 
