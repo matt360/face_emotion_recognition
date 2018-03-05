@@ -146,20 +146,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AngryFeatures.cpp" />
     <ClCompile Include="FacialFeatures.cpp" />
     <ClCompile Include="MachineLearning.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PictureFeatures.cpp" />
-    <ClCompile Include="SmileFeatures.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AngryFeatures.h" />
     <ClInclude Include="Consts.h" />
     <ClInclude Include="FacialFeatures.h" />
     <ClInclude Include="MachineLearning.h" />
-    <ClInclude Include="PictureFeatures.h" />
-    <ClInclude Include="SmileFeatures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

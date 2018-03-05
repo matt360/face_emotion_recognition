@@ -1,9 +1,7 @@
 #pragma once
 
-#include "SmileFeatures.h"
-#include "AngryFeatures.h"
-#include "PictureFeatures.h"
-#include <map>
+
+#include "FacialFeatures.h"
 
 //#define GET_VAR_NAME(var) #var
 
