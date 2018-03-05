@@ -40,7 +40,7 @@ void MachineLearning::RecognizeEmotion()
     int sad_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
     int angry_prob = 1;
 
-    int most_likely_emotion = std::min( { smile_prob, sad_prob } );
+    int most_likely_emotion = std::min( { smile_prob, sad_prob } ); // put 1 here for testing to see that angry will be the most likely emotion here
     bool smiley = most_likely_emotion == smile_prob;
     bool sad = most_likely_emotion == sad_prob;
     bool angry = most_likely_emotion == angry_prob;
@@ -49,7 +49,12 @@ void MachineLearning::RecognizeEmotion()
     std::cout << "\nIt is most likely ";
     if (smiley) std::cout << "(or) smiley face ";
     if (sad) std::cout << "(or) sad face";
-    if (angry) std::cout << "(or) angry face\n";
+    if (angry) std::cout << "(or) angry face";
+
+    std::cout << std::endl << std::endl;
+    std::cout << "smile_prob " << smile_prob << std::endl;
+    std::cout << "sad_prob " << sad_prob << std::endl;
+    std::cout << "angry_prob " << angry_prob << std::endl;
 }
 
 int MachineLearning::CheckForEmotion(const int& smallest_weighting_vector_size,

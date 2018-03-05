@@ -15,9 +15,6 @@ public:
 public:
     void Learn();
     void RecognizeEmotion();
-    int CheckForSmile(int smallest_weighting_vector_size);
-    int CheckForSad(int smallest_weighting_vector_size);
-
     int CheckForEmotion(const int& smallest_weighting_vector_size,
         const FacialFeatures& emotion_weightings,
         const FacialFeatures& emotion_to_recognize_weightings);
