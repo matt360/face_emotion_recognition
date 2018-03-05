@@ -11,6 +11,7 @@ public:
     ~MachineLearning();
 public:
     void Learn();
+    void RecognizeEmotion();
 
 private:
     int GenerateLearningVectorFromFile(const char* emotion_learning_file);
