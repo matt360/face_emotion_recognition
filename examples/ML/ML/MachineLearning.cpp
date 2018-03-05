@@ -36,11 +36,11 @@ void MachineLearning::RecognizeEmotion()
     /* it's best to keep learning files the same sizes but in case we were learning one emotion more than the other, we'll take the smallest size from the wieghting vector and use that to recognize the emotion */
     int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), smileFeatures.weightingsVector.size() } ); // use { initializer list } to get the mininum value from more than 2 variables
 
-    int smile_prob = CheckForSmile(smallest_weighting_vector_size);
-    int sad_prob = CheckForSad(smallest_weighting_vector_size);
+    int smile_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
+    int sad_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
     int angry_prob = 1;
 
-    int most_likely_emotion = std::min( { smile_prob, sad_prob, 1 } );
+    int most_likely_emotion = std::min( { smile_prob, sad_prob } );
     bool smiley = most_likely_emotion == smile_prob;
     bool sad = most_likely_emotion == sad_prob;
     bool angry = most_likely_emotion == angry_prob;
@@ -52,42 +52,7 @@ void MachineLearning::RecognizeEmotion()
     if (angry) std::cout << "(or) angry face\n";
 }
 
-int MachineLearning::CheckForSmile(int smallest_weighting_vector_size)
-{
-    // test only against the same amount of weightings from the test picture and tested picture
-    int smile_prob = 0;
-    for (int i = 0; i < smallest_weighting_vector_size; i++)
-    {
-        smile_prob += smileFeatures.weightingsVector.at(i) - pictureFeatures.weightingsVector.at(i);
-    }
-    // check for negative values
-    if (smile_prob < 0)
-        smile_prob = std::abs(smile_prob);
-    // the closer the value is to 0 the more likely it is to be this emotion
-    std::cout << std::endl;
-    std::cout << "smile_prob " << smile_prob << std::endl;
-    
-    return smile_prob;
-}
-
-int MachineLearning::CheckForSad(int smallest_weighting_vector_size)
-{
-    // test only against the same amount of weightings from the test picture and tested picture
-    int sad_prob = 0;
-    for (int i = 0; i < smallest_weighting_vector_size; i++)
-    {
-        sad_prob += smileFeatures.weightingsVector.at(i) - pictureFeatures.weightingsVector.at(i);
-    }
-    // check for negative values
-    if (sad_prob < 0)
-        sad_prob = std::abs(sad_prob);
-    // the closer the value is to 0 the more likely it is to be this emotion
-    std::cout << "sad_prob " << sad_prob << std::endl;
-
-    return sad_prob;
-}
-
-int CheckForEmotion(int smallest_weighting_vector_size,
+int MachineLearning::CheckForEmotion(const int& smallest_weighting_vector_size,
     const FacialFeatures& emotion_weightings, // 
     const FacialFeatures& emotion_to_recognize_weightings)
 {
