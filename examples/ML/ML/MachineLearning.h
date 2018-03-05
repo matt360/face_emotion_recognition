@@ -2,6 +2,7 @@
 #pragma warning(disable : 4996)
 
 #include "SmileFeatures.h"
+#include "PictureFeatures.h"
 
 class MachineLearning
 {
@@ -12,12 +13,13 @@ public:
     void Learn();
 
 private:
-    int GenerateLearningVectorFromFile();
+    int GenerateLearningVectorFromFile(const char* emotion_learning_file);
     void CheckEmotionFromPicture();
 
 private:
     // classes
    SmileFeatures smileFeatures;
+   PictureFeatures pictureFeatures;
 
     // vector to store the data of the facial features to learn from
     std::vector<int> learning_data;

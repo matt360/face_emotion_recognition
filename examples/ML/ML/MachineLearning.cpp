@@ -10,7 +10,7 @@ MachineLearning::~MachineLearning()
 
 }
 
-int MachineLearning::GenerateLearningVectorFromFile()
+int MachineLearning::GenerateLearningVectorFromFile(const char* emotion_learning_file)
 {
     // file to store the .csv 
     //FILE *fp;
@@ -18,7 +18,7 @@ int MachineLearning::GenerateLearningVectorFromFile()
     char str1[10], str2[10];
 
     // open the .csv file to read the data
-    smile = fopen("../../smile.csv", "r");
+    smile = fopen(emotion_learning_file, "r");
     // check if the file was opened correctly
     if (NULL == smile)
     {
@@ -113,13 +113,16 @@ void MachineLearning::CheckEmotionFromPicture()
 
 void MachineLearning::Learn()
 {
-    GenerateLearningVectorFromFile();
+    GenerateLearningVectorFromFile("../../smile.csv");
 
     smileFeatures.PopulateFacialFeaturesVectors(learning_data);
 
     smileFeatures.CalculateEmotionWeightings("smile_learning.csv");
 
     smileFeatures.DisplayFacialFeaturesVectors();
+
+    pictureFeatures.PopulateFacialFeaturesVectors(learning_data);
+
 
     CheckEmotionFromPicture();
 }
