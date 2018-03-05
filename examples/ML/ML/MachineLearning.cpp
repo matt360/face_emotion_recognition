@@ -43,7 +43,7 @@ void MachineLearning::Learn()
 
     smileFeatures.PopulateFacialFeaturesVectors(learning_data);
 
-    CalculateEmotionWeightingsForSmile();
+    smileFeatures.CalculateEmotionWeightings();
 
     smileFeatures.DisplayFacialFeaturesVectors();
 }

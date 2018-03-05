@@ -15,7 +15,7 @@ public:
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
 
-private:
+protected:
     // face features vectors (stack memory)
     std::vector<int> chin;
     std::vector<int> left_eyebrow;
