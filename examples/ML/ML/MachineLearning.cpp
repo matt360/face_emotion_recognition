@@ -37,13 +37,13 @@ void MachineLearning::RecognizeEmotion()
     */
 
     /* it's best to keep learning files the same sizes but in case we were learning one emotion more than the other, we'll take the smallest size from the wieghting vector and use that to recognize the emotion */
-    int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), sadFeatures.weightingsVector.size(), angryFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), } ); // use { initializer list } to get the mininum value from more than 2 variables
+    const int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), sadFeatures.weightingsVector.size(), angryFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), } ); // use { initializer list } to get the mininum value from more than 2 variables
 
-    int smile_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
-    int sad_prob = CheckForEmotion(smallest_weighting_vector_size, sadFeatures, pictureFeatures);
-    int angry_prob = CheckForEmotion(smallest_weighting_vector_size, angryFeatures, pictureFeatures);
+    const int smile_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
+    const int sad_prob = CheckForEmotion(smallest_weighting_vector_size, sadFeatures, pictureFeatures);
+    const int angry_prob = CheckForEmotion(smallest_weighting_vector_size, angryFeatures, pictureFeatures);
 
-    int most_likely_emotion = std::min( { smile_prob, sad_prob, angry_prob } ); // put 1 here for testing to see that angry will be the most likely emotion here
+    int const most_likely_emotion = std::min( { smile_prob, sad_prob, angry_prob } ); // put 1 here for testing to see that angry will be the most likely emotion here
     bool smiley = most_likely_emotion == smile_prob;
     bool sad = most_likely_emotion == sad_prob;
     bool angry = most_likely_emotion == angry_prob;
