@@ -6,7 +6,7 @@ SmileFeatures::SmileFeatures()
 
 SmileFeatures::~SmileFeatures()
 {
-    smileWeightingsFile.close();
+    //smileWeightingsFile.close();
 }
 
 //void SmileFeatures::CalculateEmotionWeightings(std::ofstream& smileWeightingsFile)
@@ -103,5 +103,5 @@ void SmileFeatures::CalculateEmotionWeightings()
     //				*it_2 << ',' << 
     //				*it_3 << std::endl; // ',' - makes it go to the next cell in the .csv file
     //			}
-
+    smileWeightingsFile.close();
 }
