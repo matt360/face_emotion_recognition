@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SmileFeatures.h"
+#include "AngryFeatures.h"
 #include "PictureFeatures.h"
 #include <map>
 
@@ -20,6 +21,8 @@ public:
 
 private:
     // classes
-   SmileFeatures smileFeatures;
-   PictureFeatures pictureFeatures;
+   FacialFeatures smileFeatures;
+   FacialFeatures angryFeatures;
+   FacialFeatures sadFeatures;
+   FacialFeatures pictureFeatures;
 };
