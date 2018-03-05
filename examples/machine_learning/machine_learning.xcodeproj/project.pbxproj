@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1E81BC22044635A00736911 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1E81BC12044635A00736911 /* main.cpp */; };
-		E1E81BCB2044656900736911 /* machine_learning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1E81BC92044656900736911 /* machine_learning.cpp */; };
+		E1A7A0BB204D950E00FD18E7 /* PictureFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0B5204D950E00FD18E7 /* PictureFeatures.cpp */; };
+		E1A7A0BC204D950E00FD18E7 /* SmileFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0B6204D950E00FD18E7 /* SmileFeatures.cpp */; };
+		E1A7A0BD204D950E00FD18E7 /* AngryFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0B7204D950E00FD18E7 /* AngryFeatures.cpp */; };
+		E1A7A0BE204D950E00FD18E7 /* FacialFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0B8204D950E00FD18E7 /* FacialFeatures.cpp */; };
+		E1A7A0BF204D950E00FD18E7 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0B9204D950E00FD18E7 /* Main.cpp */; };
+		E1A7A0C0204D950E00FD18E7 /* MachineLearning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1A7A0BA204D950E00FD18E7 /* MachineLearning.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +28,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E1A7A0A4204D945B00FD18E7 /* MachineLearning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MachineLearning.h; path = machine_learning/Headers/MachineLearning.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0A5204D945B00FD18E7 /* SmileFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmileFeatures.h; path = machine_learning/Headers/SmileFeatures.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0A8204D945C00FD18E7 /* FacialFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FacialFeatures.h; path = machine_learning/Headers/FacialFeatures.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0A9204D945C00FD18E7 /* AngryFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AngryFeatures.h; path = machine_learning/Headers/AngryFeatures.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0AA204D945C00FD18E7 /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Consts.h; path = machine_learning/Headers/Consts.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0AD204D945C00FD18E7 /* PictureFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureFeatures.h; path = machine_learning/Headers/PictureFeatures.h; sourceTree = SOURCE_ROOT; };
+		E1A7A0B5204D950E00FD18E7 /* PictureFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PictureFeatures.cpp; sourceTree = "<group>"; };
+		E1A7A0B6204D950E00FD18E7 /* SmileFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmileFeatures.cpp; sourceTree = "<group>"; };
+		E1A7A0B7204D950E00FD18E7 /* AngryFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AngryFeatures.cpp; sourceTree = "<group>"; };
+		E1A7A0B8204D950E00FD18E7 /* FacialFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FacialFeatures.cpp; sourceTree = "<group>"; };
+		E1A7A0B9204D950E00FD18E7 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		E1A7A0BA204D950E00FD18E7 /* MachineLearning.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MachineLearning.cpp; sourceTree = "<group>"; };
 		E1E81BBE2044635A00736911 /* machine_learning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = machine_learning; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1E81BC12044635A00736911 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E1E81BC92044656900736911 /* machine_learning.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = machine_learning.cpp; sourceTree = "<group>"; };
-		E1E81BCA2044656900736911 /* machine_learning.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = machine_learning.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +82,12 @@
 		E1E81BCC2044658400736911 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				E1E81BCA2044656900736911 /* machine_learning.hpp */,
+				E1A7A0A9204D945C00FD18E7 /* AngryFeatures.h */,
+				E1A7A0AA204D945C00FD18E7 /* Consts.h */,
+				E1A7A0A8204D945C00FD18E7 /* FacialFeatures.h */,
+				E1A7A0A4204D945B00FD18E7 /* MachineLearning.h */,
+				E1A7A0AD204D945C00FD18E7 /* PictureFeatures.h */,
+				E1A7A0A5204D945B00FD18E7 /* SmileFeatures.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -77,8 +95,12 @@
 		E1E81BCD2044658B00736911 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E1E81BC92044656900736911 /* machine_learning.cpp */,
-				E1E81BC12044635A00736911 /* main.cpp */,
+				E1A7A0B7204D950E00FD18E7 /* AngryFeatures.cpp */,
+				E1A7A0B8204D950E00FD18E7 /* FacialFeatures.cpp */,
+				E1A7A0BA204D950E00FD18E7 /* MachineLearning.cpp */,
+				E1A7A0B9204D950E00FD18E7 /* Main.cpp */,
+				E1A7A0B5204D950E00FD18E7 /* PictureFeatures.cpp */,
+				E1A7A0B6204D950E00FD18E7 /* SmileFeatures.cpp */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -140,8 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E81BC22044635A00736911 /* main.cpp in Sources */,
-				E1E81BCB2044656900736911 /* machine_learning.cpp in Sources */,
+				E1A7A0BB204D950E00FD18E7 /* PictureFeatures.cpp in Sources */,
+				E1A7A0C0204D950E00FD18E7 /* MachineLearning.cpp in Sources */,
+				E1A7A0BD204D950E00FD18E7 /* AngryFeatures.cpp in Sources */,
+				E1A7A0BE204D950E00FD18E7 /* FacialFeatures.cpp in Sources */,
+				E1A7A0BC204D950E00FD18E7 /* SmileFeatures.cpp in Sources */,
+				E1A7A0BF204D950E00FD18E7 /* Main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
