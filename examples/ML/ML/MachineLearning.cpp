@@ -54,13 +54,15 @@ void MachineLearning::RecognizeEmotion()
     smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
     */
 
+    // CHECK FOR SMILE
     smileFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
-    smileFeatures.CalculateEmotionWeightings("smile_learning.csv");
-    smileFeatures.DisplayFacialFeaturesVectors();
+    smileFeatures.CalculateEmotionWeightings("smile_weightings.csv");
+    //smileFeatures.DisplayFacialFeaturesVectors();
 
     pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
-    pictureFeatures.CalculateEmotionWeightings("smile_test.csv");
-    pictureFeatures.DisplayFacialFeaturesVectors();
+    pictureFeatures.CalculateEmotionWeightings("picture_weightings.csv");
+    //pictureFeatures.DisplayFacialFeaturesVectors();
+
 }
 
 
