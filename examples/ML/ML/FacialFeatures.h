@@ -22,7 +22,7 @@ public:
     //std::vector<int> left_eyebrow_left_eye_distance;
     //std::vector<int> right_eyebrow_right_eye_distance;
     //std::vector<int> nose_tip_nose_bridge_distance;
-    std::vector<int> weightings_vector;
+    std::vector<int> weightingsVector;
     // to store smile weightings
     std::ofstream weightingsFile;
 

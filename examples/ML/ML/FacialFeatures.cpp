@@ -173,7 +173,7 @@ void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
     {
         // (5 - 6)
         // at the beginning we don't have to adjust for vector size difference
-        weightings_vector.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
+        weightingsVector.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
         weightingsFile << left_eyebrow.at(i) - left_eye.at(i + 1) << std::endl;
     }
 
@@ -181,7 +181,7 @@ void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
     for (int i = 0; i < right_eyebrow.size(); i++)
     {
         // (5 - 6)
-        weightings_vector.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
+        weightingsVector.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
         weightingsFile << right_eyebrow.at(i) - right_eye.at(i + 1) << std::endl;
     }
 
@@ -189,7 +189,7 @@ void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
     for (int i = 0; i < top_lip.size(); i++)
     {
         // (12 - 12)
-        weightings_vector.push_back(top_lip.at(i) - bottom_lip.at(i));
+        weightingsVector.push_back(top_lip.at(i) - bottom_lip.at(i));
         weightingsFile << top_lip.at(i) - bottom_lip.at(i) << std::endl;
     }
 
@@ -197,7 +197,7 @@ void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
     for (int i = 0; i < nose_bridge.size(); i++)
     {
         // (5 - 4)
-        weightings_vector.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
+        weightingsVector.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
         weightingsFile << nose_bridge.at(i) - nose_tip.at(i + 1) << std::endl;
     }
 

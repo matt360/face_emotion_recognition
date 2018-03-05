@@ -1,4 +1,5 @@
 #include "MachineLearning.h"
+#include <numeric>
 
 MachineLearning::MachineLearning()
 {
@@ -63,6 +64,12 @@ void MachineLearning::RecognizeEmotion()
     pictureFeatures.CalculateEmotionWeightings("picture_weightings.csv");
     //pictureFeatures.DisplayFacialFeaturesVectors();
 
+
+    int smile_sum = std::accumulate(smileFeatures.weightingsVector.begin(), smileFeatures.weightingsVector.end(), 0);
+    int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
+
+    // the closer the value is to 0 the more likely it is to be this emotion
+    std::cout << "smile_sum - picture_sum = " << smile_sum - picture_sum << std::endl;
 }
 
 
