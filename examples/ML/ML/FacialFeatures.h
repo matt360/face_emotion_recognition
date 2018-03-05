@@ -25,6 +25,13 @@ public:
     std::vector<int> weightings_vector;
     // to store smile weightings
     std::ofstream weightingsFile;
+
+public:
+    // learning variables
+    // FILE to store .csv
+    //FILE** file;
+    // vector to store the data of the facial features to learn from
+    std::vector<int> learning_data;
 protected:
     // face features vectors (stack memory)
     std::vector<int> chin;

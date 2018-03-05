@@ -2,118 +2,41 @@
 
 MachineLearning::MachineLearning()
 {
-	//m_FileData.open("/../../smile.csv");
 }
 
 MachineLearning::~MachineLearning()
 {
-
 }
 
-int MachineLearning::GenerateLearningVectorFromFile(const char* emotion_learning_file)
+int MachineLearning::GenerateLearningVectorFromFile(const char* emotion_learning_file, std::vector<int>& learning_data)
 {
     // file to store the .csv 
-    //FILE *fp;
+    FILE *file;
     // two chars to read from two columns in each row in the .csv file
     char str1[10], str2[10];
 
     // open the .csv file to read the data
-    smile = fopen(emotion_learning_file, "r");
+    file = fopen(emotion_learning_file, "r");
     // check if the file was opened correctly
-    if (NULL == smile)
+    if (NULL == file)
     {
         printf("\nError in opening file.");
         return 0;
     }
 
     // read data into a vector from a .csv file with two columns
-    while (EOF != fscanf(smile, " %[^,], %s, %s ", str1, str2))
+    while (EOF != fscanf(file, " %[^,], %s, %s ", str1, str2))
     {
         learning_data.push_back(std::stoi(str1));
         learning_data.push_back(std::stoi(str2));
     }
     // close the file after reading the data into the vector
-    fclose(smile);
-}
-
-void MachineLearning::CheckEmotionFromPicture()
-{
-    /*
-    Check emtion from a picture:
-    - Read facial features of a single face from a file
-    - Create facial features vector
-    - Create an emotion weighted vector
-    - Read emotion weighting from a file (in a group of 3)
-    - Create emotion weighted vectors (in a group of 3)
-    - Compare the emotion weighted vector (of a single face) with the emotion weighted vectors (created from the learning file),
-    like smile_weightings_vector, sad_weightenings_vector ect.
-    - The one with the least score is the most likely to be that emotion:
-    smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
-    */
-
-    /* Read facial features of a single face from a file */
-    // file to store the .csv 
-    FILE *fp;
-    // two chars to read from two columns in each row in the .csv file
-    char str1[10], str2[10];
-
-    // open the .csv file to read the data
-    fp = fopen("../../smile_test.csv", "r");
-    // check if the file was opened correctly
-    if (NULL == fp)
-    {
-        printf("\nError in opening file.");
-    }
-    else
-    {
-        // read data into a vector from a .csv file with two columns
-        while (EOF != fscanf(fp, " %[^,], %s, %s ", str1, str2))
-        {
-            /* Create facial features vector*/
-            facial_features_from_picture.push_back(std::stoi(str1));
-            facial_features_from_picture.push_back(std::stoi(str2));
-        }
-    }
-
-    /* Create emotion weighted vector */
-    //facial_features_from_picture
-
-    #if 0
-    /* Read emotion weighting from a file */
-    // close the file after reading the data into the vector
-    fclose(fp);
-
-    // file to store the .csv 
-    FILE *fpe;
-    // two chars to read from two columns in each row in the .csv file
-    char str1[10], str2[10];
-
-    // open the .csv file to read the data
-    fpe = fopen("smile_learning.csv", "r");
-    // check if the file was opened correctly
-    if (NULL == fp)
-    {
-        printf("\nError in opening file.");
-    }
-    else
-    {
-        // read data into a vector from a .csv file with two columns
-        while (EOF != fscanf(fpe, " %[^,], %s, %s ", str1, str2))
-        {
-            /* Create emotion weighting vectors */
-            smile_weightings.push_back(std::stoi(str1));
-            smile_weightings.push_back(std::stoi(str2));
-        }
-    }
-    // close the file after reading the data into the vector
-    fclose(fp);
-    #endif // 0
-
+    fclose(file);
 }
 
 void MachineLearning::Learn()
 {
-    GenerateLearningVectorFromFile("../../smile.csv");
+    GenerateLearningVectorFromFile("../../smile.csv", smileFeatures.learning_data);
 }
 
 void MachineLearning::RecognizeEmotion()
@@ -130,16 +53,13 @@ void MachineLearning::RecognizeEmotion()
     - The one with the least score is the most likely to be that emotion:
     smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
     */
-    smileFeatures.PopulateFacialFeaturesVectors(learning_data);
 
+    smileFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
     smileFeatures.CalculateEmotionWeightings("smile_learning.csv");
-
     smileFeatures.DisplayFacialFeaturesVectors();
 
-    pictureFeatures.PopulateFacialFeaturesVectors(learning_data);
-
+    pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
     pictureFeatures.CalculateEmotionWeightings("smile_test.csv");
-
     pictureFeatures.DisplayFacialFeaturesVectors();
 }
 
@@ -206,3 +126,78 @@ std::cout << data[0][0] << std::endl;*/
 //	}
 //
 //	m_FileData.close();
+
+//void MachineLearning::CheckEmotionFromPicture()
+//{
+//    /*
+//    Check emtion from a picture:
+//    - Read facial features of a single face from a file
+//    - Create facial features vector
+//    - Create an emotion weighted vector
+//    - Read emotion weighting from a file (in a group of 3)
+//    - Create emotion weighted vectors (in a group of 3)
+//    - Compare the emotion weighted vector (of a single face) with the emotion weighted vectors (created from the learning file),
+//    like smile_weightings_vector, sad_weightenings_vector ect.
+//    - The one with the least score is the most likely to be that emotion:
+//    smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
+//    */
+//
+//    /* Read facial features of a single face from a file */
+//    // file to store the .csv 
+//    FILE *fp;
+//    // two chars to read from two columns in each row in the .csv file
+//    char str1[10], str2[10];
+//
+//    // open the .csv file to read the data
+//    fp = fopen("../../smile_test.csv", "r");
+//    // check if the file was opened correctly
+//    if (NULL == fp)
+//    {
+//        printf("\nError in opening file.");
+//    }
+//    else
+//    {
+//        // read data into a vector from a .csv file with two columns
+//        while (EOF != fscanf(fp, " %[^,], %s, %s ", str1, str2))
+//        {
+//            /* Create facial features vector*/
+//            facial_features_from_picture.push_back(std::stoi(str1));
+//            facial_features_from_picture.push_back(std::stoi(str2));
+//        }
+//    }
+//
+//    /* Create emotion weighted vector */
+//    //facial_features_from_picture
+//
+//    #if 0
+//    /* Read emotion weighting from a file */
+//    // close the file after reading the data into the vector
+//    fclose(fp);
+//
+//    // file to store the .csv 
+//    FILE *fpe;
+//    // two chars to read from two columns in each row in the .csv file
+//    char str1[10], str2[10];
+//
+//    // open the .csv file to read the data
+//    fpe = fopen("smile_learning.csv", "r");
+//    // check if the file was opened correctly
+//    if (NULL == fp)
+//    {
+//        printf("\nError in opening file.");
+//    }
+//    else
+//    {
+//        // read data into a vector from a .csv file with two columns
+//        while (EOF != fscanf(fpe, " %[^,], %s, %s ", str1, str2))
+//        {
+//            /* Create emotion weighting vectors */
+//            smile_weightings.push_back(std::stoi(str1));
+//            smile_weightings.push_back(std::stoi(str2));
+//        }
+//    }
+//    // close the file after reading the data into the vector
+//    fclose(fp);
+//    #endif // 0
+//
+//}

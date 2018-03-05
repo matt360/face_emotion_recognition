@@ -14,19 +14,12 @@ public:
     void RecognizeEmotion();
 
 private:
-    int GenerateLearningVectorFromFile(const char* emotion_learning_file);
-    void CheckEmotionFromPicture();
+    int GenerateLearningVectorFromFile(const char* emotion_learning_file, std::vector<int>& learning_data);
 
 private:
     // classes
    SmileFeatures smileFeatures;
    PictureFeatures pictureFeatures;
-
-    // vector to store the data of the facial features to learn from
-    std::vector<int> learning_data;
-
-    // FILES to store .csv's
-    FILE *smile;
 
     // check emotion form picture
     std::vector<int> facial_features_from_picture;
