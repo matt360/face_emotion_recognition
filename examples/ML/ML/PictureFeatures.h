@@ -7,7 +7,7 @@ public:
 	PictureFeatures();
 	~PictureFeatures();
 
-    void CalculateEmotionWeightings() override;
+    void CalculateEmotionWeightings(const char* file_name) override;
 
     std::vector<int> picture_weightings;
     // to store smile weightings

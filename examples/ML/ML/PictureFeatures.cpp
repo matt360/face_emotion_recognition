@@ -8,7 +8,7 @@ PictureFeatures::~PictureFeatures()
 {
 }
 
-void PictureFeatures::CalculateEmotionWeightings()
+void PictureFeatures::CalculateEmotionWeightings(const char* file_name)
 {
     // std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
     pictureWeightingsFile.open("smile_learning.csv", std::ios_base::app);

@@ -10,10 +10,10 @@ SmileFeatures::~SmileFeatures()
 }
 
 //void SmileFeatures::CalculateEmotionWeightings(std::ofstream& smileWeightingsFile)
-void SmileFeatures::CalculateEmotionWeightings()
+void SmileFeatures::CalculateEmotionWeightings(const char* file_name)
 {
     // std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
-    smileWeightingsFile.open("smile_learning.csv", std::ios_base::app);
+    smileWeightingsFile.open(file_name, std::ios_base::app);
 
     // data in the facial_recognition algorithm has a layout:
     /*

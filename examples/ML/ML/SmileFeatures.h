@@ -7,7 +7,7 @@ public:
 	SmileFeatures();
 	~SmileFeatures();
 
-    void CalculateEmotionWeightings() override;
+    void CalculateEmotionWeightings(const char* file_name) override;
 
     // emotion weighted values (emv)
     //std::vector<int> top_lip_bottom_lip_distance;

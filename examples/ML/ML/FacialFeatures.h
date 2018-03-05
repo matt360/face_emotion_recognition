@@ -15,7 +15,7 @@ public:
 
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
-    virtual void CalculateEmotionWeightings() = 0;
+    virtual void CalculateEmotionWeightings(const char* file_name) = 0;
 
 protected:
     // face features vectors (stack memory)
