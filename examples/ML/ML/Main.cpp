@@ -321,7 +321,7 @@ void CheckEmotionFromPicture()
 	//facial_features_from_picture
 
 	#if 0
-				/* Read emotion weighting from a file */
+	/* Read emotion weighting from a file */
 	// close the file after reading the data into the vector
 	fclose(fp);
 

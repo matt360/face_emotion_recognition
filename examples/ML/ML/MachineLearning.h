@@ -3,17 +3,15 @@
 class MachineLearning
 {
 public:
-	MachineLearning();
-	~MachineLearning();
+    MachineLearning();
+    ~MachineLearning();
 
-	//std::ofstream m_Smile;
-	void Learn();
-	//std::vector<int> m_Data;
+    void Learn();
 
-	
 private:
-	//std::ifstream m_FileData;
+
 };
+	
 
 
 /*
