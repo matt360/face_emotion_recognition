@@ -10,7 +10,8 @@ class FacialFeatures
 {
 public:
 	FacialFeatures();
-	~FacialFeatures();
+    // virtual destructor ensures that both destructors will be called; of the base and the derived class
+	virtual ~FacialFeatures();
 
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();

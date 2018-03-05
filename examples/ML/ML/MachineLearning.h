@@ -8,9 +8,13 @@ class MachineLearning
 public:
     MachineLearning();
     ~MachineLearning();
-
+public:
     void Learn();
+
+private:
     int GenerateLearningVectorFromFile();
+    void CheckEmotionFromPicture();
+
 private:
     // classes
    SmileFeatures smileFeatures;
@@ -20,6 +24,9 @@ private:
 
     // FILES to store .csv's
     FILE *smile;
+
+    // check emotion form picture
+    std::vector<int> facial_features_from_picture;
 };
 	
 
