@@ -86,3 +86,20 @@ int MachineLearning::CheckForSad(int smallest_weighting_vector_size)
 
     return sad_prob;
 }
+
+int CheckForEmotion(int smallest_weighting_vector_size,
+    const FacialFeatures& emotion_weightings, // 
+    const FacialFeatures& emotion_to_recognize_weightings)
+{
+    // test only against the same amount of weightings from the test picture and tested picture
+    int emotion_prob = 0;
+    for (int i = 0; i < smallest_weighting_vector_size; i++)
+    {
+        emotion_prob += emotion_weightings.weightingsVector.at(i) - emotion_to_recognize_weightings.weightingsVector.at(i);
+    }
+    // check for negative values
+    if (emotion_prob  < 0)
+        emotion_prob = std::abs(emotion_prob);
+
+    return emotion_prob;
+}
