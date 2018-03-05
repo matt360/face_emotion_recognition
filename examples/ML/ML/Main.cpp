@@ -1,5 +1,3 @@
-#pragma warning(disable : 4996)
-
 #include "MachineLearning.h"
 
 int main()

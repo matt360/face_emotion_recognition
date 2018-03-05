@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AngryFeatures.cpp" />
     <ClCompile Include="FacialFeatures.cpp" />
     <ClCompile Include="MachineLearning.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="SmileFeatures.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AngryFeatures.h" />
     <ClInclude Include="Consts.h" />
     <ClInclude Include="FacialFeatures.h" />
     <ClInclude Include="MachineLearning.h" />
