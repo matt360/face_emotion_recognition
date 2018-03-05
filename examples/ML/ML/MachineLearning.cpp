@@ -55,21 +55,29 @@ void MachineLearning::RecognizeEmotion()
     smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
     */
 
-    // CHECK FOR SMILE
     smileFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
     smileFeatures.CalculateEmotionWeightings("smile_weightings.csv");
     //smileFeatures.DisplayFacialFeaturesVectors();
 
+    // CHECK FOR SMILE
     pictureFeatures.PopulateFacialFeaturesVectors(smileFeatures.learning_data);
-    pictureFeatures.CalculateEmotionWeightings("picture_weightings.csv");
+    pictureFeatures.CalculateEmotionWeightings("picture_smile_weightings.csv");
     //pictureFeatures.DisplayFacialFeaturesVectors();
-
-
     int smile_sum = std::accumulate(smileFeatures.weightingsVector.begin(), smileFeatures.weightingsVector.end(), 0);
     int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
+    int smile_prob = smile_sum - picture_sum;
+    std::cout << "smile_prob " << smile_prob << std::endl;
+
+    // CHECK FOR SAD
+    pictureFeatures.PopulateFacialFeaturesVectors(sadFeatures.learning_data);
+    pictureFeatures.CalculateEmotionWeightings("picture_sad_weightings.csv");
+    int sad_sum = std::accumulate(sadFeatures.weightingsVector.begin(), sadFeatures.weightingsVector.end(), 0);
+    int picture_sum = std::accumulate(pictureFeatures.weightingsVector.begin(), pictureFeatures.weightingsVector.end(), 0);
+    int sad_prob = smile_sum - picture_sum;
+    std::cout << "sad_prob " << sad_prob << std::endl;
 
     // the closer the value is to 0 the more likely it is to be this emotion
-    std::cout << "smile_sum - picture_sum = " << smile_sum - picture_sum << std::endl;
+    // check for negative values
 }
 
 
