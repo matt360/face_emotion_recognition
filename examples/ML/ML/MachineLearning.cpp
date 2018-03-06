@@ -13,12 +13,25 @@ void MachineLearning::Learn()
 {
     // Learn smile
     /* first variable is the name of the file that contains features of a certain emotion, second is the name of the file mainly serving debugging purposes so we can check what weightings for a given emotion are */
-    smileFeatures.Learn("../../smile.csv", "smile_weightings.csv");
-    angryFeatures.Learn("../../angry.csv", "angry_weightings.csv");
-    sadFeatures.Learn("../../sad.csv", "sad_weightings.csv");
-    /* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */
-    // picture from which we want to recognize an emotion
-    pictureFeatures.Learn("../../smile_test_1.csv", "picture_smile_weightings.csv");
+    smileFeatures.Learn("../../smile.csv");
+    angryFeatures.Learn("../../angry.csv");
+    sadFeatures.Learn("../../sad.csv");   
+}
+
+/* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */
+std::string MachineLearning::LearnPicture()
+{
+    // name of the picture we want to recognize an emotion from
+    std::cout << "Type a name of the picture to recognize an emotion from: ";
+    std::string recognize_picture_name;
+    std::cin >> recognize_picture_name;
+    // add a path to the pictures .csv data
+    std::string pic_name;
+    pic_name = "../../" + recognize_picture_name + ".csv";
+    // extract emotion weightings from the picture
+    pictureFeatures.Learn(pic_name.c_str());
+
+    return pic_name;
 }
 
 void MachineLearning::RecognizeEmotion()
@@ -58,6 +71,8 @@ void MachineLearning::RecognizeEmotion()
     std::cout << "smile_prob " << smile_prob << std::endl;
     std::cout << "sad_prob " << sad_prob << std::endl;
     std::cout << "angry_prob " << angry_prob << std::endl;
+
+    pictureFeatures.Release();
 }
 
 int MachineLearning::CheckForEmotion(const int& smallest_weighting_vector_size,
