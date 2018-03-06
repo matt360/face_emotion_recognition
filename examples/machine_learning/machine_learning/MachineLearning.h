@@ -1,8 +1,7 @@
 #pragma once
 
-#include "SmileFeatures.h"
-#include "PictureFeatures.h"
-#include <map>
+
+#include "FacialFeatures.h"
 
 //#define GET_VAR_NAME(var) #var
 
@@ -13,6 +12,7 @@ public:
     ~MachineLearning();
 public:
     void Learn();
+    std::string LearnPicture();
     void RecognizeEmotion();
     int CheckForEmotion(const int& smallest_weighting_vector_size,
         const FacialFeatures& emotion_weightings,
@@ -20,6 +20,8 @@ public:
 
 private:
     // classes
-   SmileFeatures smileFeatures;
-   PictureFeatures pictureFeatures;
+   FacialFeatures smileFeatures;
+   FacialFeatures angryFeatures;
+   FacialFeatures sadFeatures;
+   FacialFeatures pictureFeatures;
 };
