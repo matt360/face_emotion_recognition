@@ -336,7 +336,7 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
     }
 
     // read data into a vector from a .csv file with two columns
-    while (EOF != fscanf(file, " %[^,], %s, %s ", str1, str2))
+    while (EOF != fscanf(file, " %[^,], %s ", str1, str2))
     {
         learning_data.push_back(std::stoi(str1));
         learning_data.push_back(std::stoi(str2));
