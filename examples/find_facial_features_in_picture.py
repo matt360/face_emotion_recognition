@@ -28,8 +28,8 @@ for face_landmarks in face_landmarks_list:
     ]
 
     # print facial features and their positions in the terminal
-    # for facial_feature in facial_features:
-    #     print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
+    for facial_feature in facial_features:
+        print("The {} in this face has the following points: {}".format(facial_feature, face_landmarks[facial_feature]))
 
     # save features into a file
     for facial_feature in facial_features:
@@ -46,7 +46,7 @@ for face_landmarks in face_landmarks_list:
         #map.append(facial_feature, face_landmarks[facial_feature])
 
     # print data
-    # o = open('smile.csv')
+    # o = open('angry_test_1.csv')
     # csv_o = csv.reader(o)
     # for row in csv_o:
     #     print(row[1])
