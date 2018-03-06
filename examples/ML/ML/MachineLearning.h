@@ -1,8 +1,7 @@
 #pragma once
 
-#include "SmileFeatures.h"
-#include "PictureFeatures.h"
-#include <map>
+
+#include "FacialFeatures.h"
 
 //#define GET_VAR_NAME(var) #var
 
@@ -20,6 +19,8 @@ public:
 
 private:
     // classes
-   SmileFeatures smileFeatures;
-   PictureFeatures pictureFeatures;
+   FacialFeatures smileFeatures;
+   FacialFeatures angryFeatures;
+   FacialFeatures sadFeatures;
+   FacialFeatures pictureFeatures;
 };

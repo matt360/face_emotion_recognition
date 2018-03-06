@@ -14,8 +14,11 @@ void MachineLearning::Learn()
     // Learn smile
     /* first variable is the name of the file that contains features of a certain emotion, second is the name of the file mainly serving debugging purposes so we can check what weightings for a given emotion are */
     smileFeatures.Learn("../../smile.csv", "smile_weightings.csv");
+    angryFeatures.Learn("../../angry.csv", "angry_weightings.csv");
+    sadFeatures.Learn("../../sad.csv", "sad_weightings.csv");
     /* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */
-    pictureFeatures.Learn("../../smile_test.csv", "picture_smile_weightings.csv");
+    // picture from which we want to recognize an emotion
+    pictureFeatures.Learn("../../smile_test_1.csv", "picture_smile_weightings.csv");
 }
 
 void MachineLearning::RecognizeEmotion()
@@ -34,13 +37,13 @@ void MachineLearning::RecognizeEmotion()
     */
 
     /* it's best to keep learning files the same sizes but in case we were learning one emotion more than the other, we'll take the smallest size from the wieghting vector and use that to recognize the emotion */
-    int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), smileFeatures.weightingsVector.size() } ); // use { initializer list } to get the mininum value from more than 2 variables
+    const int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), sadFeatures.weightingsVector.size(), angryFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), } ); // use { initializer list } to get the mininum value from more than 2 variables
 
-    int smile_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
-    int sad_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
-    int angry_prob = 1;
+    const int smile_prob = CheckForEmotion(smallest_weighting_vector_size, smileFeatures, pictureFeatures);
+    const int sad_prob = CheckForEmotion(smallest_weighting_vector_size, sadFeatures, pictureFeatures);
+    const int angry_prob = CheckForEmotion(smallest_weighting_vector_size, angryFeatures, pictureFeatures);
 
-    int most_likely_emotion = std::min( { smile_prob, sad_prob } ); // put 1 here for testing to see that angry will be the most likely emotion here
+    int const most_likely_emotion = std::min( { smile_prob, sad_prob, angry_prob } ); // put 1 here for testing to see that angry will be the most likely emotion here
     bool smiley = most_likely_emotion == smile_prob;
     bool sad = most_likely_emotion == sad_prob;
     bool angry = most_likely_emotion == angry_prob;

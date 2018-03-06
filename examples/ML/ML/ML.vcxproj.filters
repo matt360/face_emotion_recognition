@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Emotions">
-      <UniqueIdentifier>{bafe07cd-5bb4-4726-be89-0780e427c6e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Emotions">
-      <UniqueIdentifier>{ad0ff137-c8bc-40fc-8ba4-d504fb61ae7a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MachineLearning.cpp">
@@ -27,17 +21,8 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SmileFeatures.cpp">
-      <Filter>Source Files\Emotions</Filter>
-    </ClCompile>
-    <ClCompile Include="PictureFeatures.cpp">
-      <Filter>Source Files\Emotions</Filter>
-    </ClCompile>
     <ClCompile Include="FacialFeatures.cpp">
-      <Filter>Source Files\Emotions</Filter>
-    </ClCompile>
-    <ClCompile Include="AngryFeatures.cpp">
-      <Filter>Source Files\Emotions</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,17 +32,8 @@
     <ClInclude Include="Consts.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SmileFeatures.h">
-      <Filter>Header Files\Emotions</Filter>
-    </ClInclude>
-    <ClInclude Include="PictureFeatures.h">
-      <Filter>Header Files\Emotions</Filter>
-    </ClInclude>
     <ClInclude Include="FacialFeatures.h">
-      <Filter>Header Files\Emotions</Filter>
-    </ClInclude>
-    <ClInclude Include="AngryFeatures.h">
-      <Filter>Header Files\Emotions</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
