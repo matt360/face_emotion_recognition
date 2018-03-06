@@ -13,6 +13,7 @@ public:
 	FacialFeatures();
     // virtual destructor ensures that both destructors will be called; of the base and the derived class
 	virtual ~FacialFeatures();
+    void Release();
 
     void PopulateFacialFeaturesVectors();
     void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
@@ -27,7 +28,6 @@ public:
 
 public:
     int GenerateLearningVectorFromFile(const char* emotion_learning_file);
-    void Release();
     void Learn(const char* learning_file_name, const char* weightings_file_name);
     void Learn(const char * learning_file_name);
     // learning variables - vector to store the data of the facial features to learn from

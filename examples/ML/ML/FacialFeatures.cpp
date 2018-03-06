@@ -8,6 +8,21 @@ FacialFeatures::~FacialFeatures()
 {
 }
 
+void FacialFeatures::Release()
+{
+    learning_data.clear();
+    weightingsVector.clear();
+    chin.clear();
+    left_eyebrow.clear();
+    right_eyebrow.clear();
+    nose_bridge.clear();
+    nose_tip.clear();
+    left_eye.clear();
+    right_eye.clear();
+    top_lip.clear();
+    bottom_lip.clear();
+}
+
 void FacialFeatures::PopulateFacialFeaturesVectors()
 {
     // the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
@@ -343,21 +358,6 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
     }
     // close the file after reading the data into the vector
     fclose(file);
-}
-
-void FacialFeatures::Release()
-{
-    learning_data.clear();
-    weightingsVector.clear();
-    chin.clear();
-    left_eyebrow.clear();
-    right_eyebrow.clear();
-    nose_bridge.clear();
-    nose_tip.clear();
-    left_eye.clear();
-    right_eye.clear();
-    top_lip.clear();
-    bottom_lip.clear();
 }
 
 void FacialFeatures::Learn(const char* learning_file_name, const char* weightings_file_name)
