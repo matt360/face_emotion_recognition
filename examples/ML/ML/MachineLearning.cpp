@@ -36,19 +36,6 @@ std::string MachineLearning::LearnPicture()
 
 void MachineLearning::RecognizeEmotion()
 {
-    /*
-    Check emtion from a picture:
-    - Read facial features of a single face from a file
-    - Create facial features vector
-    - Create an emotion weighted vector
-    - Read emotion weighting from a file (in a group of 3)
-    - Create emotion weighted vectors (in a group of 3)
-    - Compare the emotion weighted vector (of a single face) with the emotion weighted vectors (created from the learning file),
-    like smile_weightings_vector, sad_weightenings_vector ect.
-    - The one with the least score is the most likely to be that emotion:
-    smile_probability.push_back(emotion weighted vectors(i) - emotion weight from a single picture)
-    */
-
     /* it's best to keep learning files the same sizes but in case we were learning one emotion more than the other, we'll take the smallest size from the wieghting vector and use that to recognize the emotion */
     const int smallest_weighting_vector_size = std::min({ smileFeatures.weightingsVector.size(), sadFeatures.weightingsVector.size(), angryFeatures.weightingsVector.size(), pictureFeatures.weightingsVector.size(), } ); // use { initializer list } to get the mininum value from more than 2 variables
 
