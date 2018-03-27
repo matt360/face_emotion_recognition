@@ -15,24 +15,18 @@ public:
 	virtual ~FacialFeatures();
     void Release();
 
-    void PopulateFacialFeaturesVectors();
-    void PopulateFacialFeaturesVectors(const std::vector<int>& learning_data);
     void DisplayFacialFeaturesVectors();
-    void CalculateEmotionWeightings(const char* file_name);
+    void PopulateFacialFeaturesVectors();
     void CalculateEmotionWeightings();
-
+public:
     // emotion weighted values (ewv)
     std::vector<int> weightingsVector;
     // to store smile weightings
     std::ofstream weightingsFile;
-
 public:
     int GenerateLearningVectorFromFile(const char* emotion_learning_file);
-    void Learn(const char* learning_file_name, const char* weightings_file_name);
     void Learn(const char * learning_file_name);
-    // learning variables - vector to store the data of the facial features to learn from
-    std::vector<int> learning_data;
-
+    std::vector<int> learning_data;  // learning variables - vector to store the data of the facial features to learn from
 protected:
     // face features vectors (stack memory)
     std::vector<int> chin;

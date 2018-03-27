@@ -49,8 +49,38 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
     fclose(file);
 }
 
+// data in the facial_recognition algorithm has a layout:
+//
+// 'chin',          17 * (a, b)
+// 'left_eyebrow',  5 * (a, b)
+// 'right_eyebrow', 5 * (a, b)
+// 'nose_bridge',   4 * (a, b)
+// 'nose_tip',      5 * (a, b)
+// 'left_eye',      6 * (a, b)
+// 'right_eye',     6 * (a, b)
+// 'top_lip',       12 * (a, b)
+// 'bottom_lip'     12 * (a, b)
+//
+// in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
+// a distance of the left_eyebrow from the left_eye :
+// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
+// (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
+//
+// const int CHIN = 17;	// 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
+// const int LEFT_EYEBROW = 5;      //  5 * (a, b)
+// const int RIGHT_EYEBROW = 5;     //  5 * (a, b)
+// const int NOSE_BRIDGE = 4;       //  4 * (a, b)
+// const int NOSE_TIP = 5;          //  5 * (a, b)
+// const int LEFT_EYE = 6;          //  6 * (a, b)
+// const int RIGHT_EYE = 6;         //  6 * (a, b)
+// const int TOP_LIP = 12;          // 12 * (a, b)
+// const int BOTTOM_LIP = 12;       // 12 * (a, b)
+// const int LIP_DIST = 12;
+// const int EYE_EYEBROW_DIST = 5;
+// const int NOSE_DIST = 4;
 void FacialFeatures::PopulateFacialFeaturesVectors()
 {
+
     // the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
     // by 144 to get the number of pictures examined.
     std::cout << "STEP: " << STEP << std::endl;
@@ -106,62 +136,6 @@ void FacialFeatures::PopulateFacialFeaturesVectors()
         std::cout << "Papulating Facial Features Vectors went OK!" << std::endl;
 }
 
-void FacialFeatures::PopulateFacialFeaturesVectors(const std::vector<int>& learning_data)
-{
-    // the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
-    // by 144 to get the number of pictures examined.
-    std::cout << "STEP: " << STEP << std::endl;
-    std::cout << "learning_data size / STEP: " << learning_data.size() / STEP << std::endl;
-    // for the same reason we increase 'i' by 144
-    int i = 0;
-    for (int j = 0; j < learning_data.size() / STEP; j++)
-    {
-        // chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
-        for (; i < (CHIN * 2) + j * STEP; i++) // we need to multiply by 2 to get all the data since it's a 1D array
-            chin.push_back(learning_data.at(i)); // create a vector of chin positions
-
-        // left eyebrow (5) [18]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2) + j * STEP; i++)
-            left_eyebrow.push_back(learning_data.at(i));
-
-        // right_eyebrow (5) [23]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2) + j * STEP; i++)
-            right_eyebrow.push_back(learning_data.at(i));
-
-        // nose_bridge (4) [28]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2) + j * STEP; i++)
-            nose_bridge.push_back(learning_data.at(i));
-
-        // nose_tip (5) [32]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2) + j * STEP; i++)
-        {
-            nose_tip.push_back(learning_data.at(i));
-        }
-
-        // left_eye (6) [37]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2) + j * STEP; i++)
-            left_eye.push_back(learning_data.at(i));
-
-        // right_eye (6) [43]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2) + j * STEP; i++)
-            right_eye.push_back(learning_data.at(i));
-
-        // top_lip (12) [49]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2) +
-            j * STEP; i++)
-            top_lip.push_back(learning_data.at(i));
-
-        // bottom_lip (12) [61]
-        for (; i < (CHIN * 2 + LEFT_EYEBROW * 2 + RIGHT_EYEBROW * 2 + NOSE_BRIDGE * 2 + NOSE_TIP * 2 + LEFT_EYE * 2 + RIGHT_EYE * 2 + TOP_LIP * 2 +
-            BOTTOM_LIP * 2) + j * STEP; i++)
-            bottom_lip.push_back(learning_data.at(i));
-    }
-    // check if populating vectors with facial features went ok. The sizes of all vector features added together should equal 'i'
-    if (i == chin.size() + left_eyebrow.size() + right_eyebrow.size() + nose_bridge.size() + nose_tip.size() + left_eye.size() + right_eye.size() +
-        top_lip.size() + bottom_lip.size())
-        std::cout << "Papulating Facial Features Vectors went OK!" << std::endl;
-}
-
 void FacialFeatures::DisplayFacialFeaturesVectors()
 {
     // 'chin', 17 * (a, b)
@@ -202,76 +176,6 @@ void FacialFeatures::DisplayFacialFeaturesVectors()
         std::cout << bottom_lip.at(i) << ", " << bottom_lip.at(i + 1) << std::endl;
 }
 
-void FacialFeatures::CalculateEmotionWeightings(const char* file_name)
-{
-    // std::ios_bas::app - all output operations happen at the end of the file, appending to its existing contents.
-    weightingsFile.open(file_name, std::ios_base::app);
-
-    // data in the facial_recognition algorithm has a layout:
-    //
-    // 'chin',          17 * (a, b)
-    // 'left_eyebrow',  5 * (a, b)
-    // 'right_eyebrow', 5 * (a, b)
-    // 'nose_bridge',   4 * (a, b)
-    // 'nose_tip',      5 * (a, b)
-    // 'left_eye',      6 * (a, b)
-    // 'right_eye',     6 * (a, b)
-    // 'top_lip',       12 * (a, b)
-    // 'bottom_lip'     12 * (a, b)
-    //
-    // in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
-    // a distance of the left_eyebrow from the left_eye :
-    // 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
-    // (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
-    //
-    // const int CHIN = 17;	// 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
-    // const int LEFT_EYEBROW = 5;      //  5 * (a, b)
-    // const int RIGHT_EYEBROW = 5;     //  5 * (a, b)
-    // const int NOSE_BRIDGE = 4;       //  4 * (a, b)
-    // const int NOSE_TIP = 5;          //  5 * (a, b)
-    // const int LEFT_EYE = 6;          //  6 * (a, b)
-    // const int RIGHT_EYE = 6;         //  6 * (a, b)
-    // const int TOP_LIP = 12;          // 12 * (a, b)
-    // const int BOTTOM_LIP = 12;       // 12 * (a, b)
-    // const int LIP_DIST = 12;
-    // const int EYE_EYEBROW_DIST = 5;
-    // const int NOSE_DIST = 4;
-
-    for (int i = 0; i < left_eyebrow.size(); i++)
-    {
-        // (5 - 6)
-        // at the beginning we don't have to adjust for vector size difference
-        weightingsVector.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
-        weightingsFile << left_eyebrow.at(i) - left_eye.at(i + 1) << std::endl;
-    }
-
-    // a distance of the right_eyebrow from the right_eye: 
-    for (int i = 0; i < right_eyebrow.size(); i++)
-    {
-        // (5 - 6)
-        weightingsVector.push_back(right_eyebrow.at(i) - right_eye.at(i + 1));
-        weightingsFile << right_eyebrow.at(i) - right_eye.at(i + 1) << std::endl;
-    }
-
-    // a distance of the top_lip from the bottom_lip:
-    for (int i = 0; i < top_lip.size(); i++)
-    {
-        // (12 - 12)
-        weightingsVector.push_back(top_lip.at(i) - bottom_lip.at(i));
-        weightingsFile << top_lip.at(i) - bottom_lip.at(i) << std::endl;
-    }
-
-    // a distance from the nose tip to the nose bridge:
-    for (int i = 0; i < nose_bridge.size(); i++)
-    {
-        // (5 - 4)
-        weightingsVector.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
-        weightingsFile << nose_bridge.at(i) - nose_tip.at(i + 1) << std::endl;
-    }
-
-    weightingsFile.close();
-}
-
 void FacialFeatures::CalculateEmotionWeightings()
 {
     for (int i = 0; i < left_eyebrow.size(); i++)
@@ -301,14 +205,6 @@ void FacialFeatures::CalculateEmotionWeightings()
         // (5 - 4)
         weightingsVector.push_back(nose_bridge.at(i) - nose_tip.at(i + 1));
     }
-}
-
-void FacialFeatures::Learn(const char* learning_file_name, const char* weightings_file_name)
-{
-    GenerateLearningVectorFromFile(learning_file_name);
-
-    PopulateFacialFeaturesVectors();
-    CalculateEmotionWeightings(weightings_file_name);
 }
 
 void FacialFeatures::Learn(const char* learning_file_name)
