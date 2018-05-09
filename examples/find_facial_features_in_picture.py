@@ -5,7 +5,7 @@ import csv
 # to run the application in the terminal: 'python3 find_facial_features_in_picture.py'
 
 # Load the jpg file into a numpy array
-image = face_recognition.load_image_file("angry_test_1.jpeg")
+image = face_recognition.load_image_file("me_smile.jpeg")
 
 # Find all facial features in all the faces in the image
 face_landmarks_list = face_recognition.face_landmarks(image)
@@ -33,7 +33,7 @@ for face_landmarks in face_landmarks_list:
 
     # save features into a file
     for facial_feature in facial_features:
-        myFile = open('angry.csv', 'a')
+        myFile = open('smile_test_1.csv', 'a')
         with myFile:
             writer = csv.writer(myFile)
             writer.writerows(face_landmarks[facial_feature])
