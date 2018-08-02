@@ -13,9 +13,9 @@ void MachineLearning::Learn()
 {
     // Learn smile
     /* first variable is the name of the file that contains features of a certain emotion, second is the name of the file mainly serving debugging purposes so we can check what weightings for a given emotion are */
-    smileFeatures.Learn("../../smile.csv");
-    angryFeatures.Learn("../../angry.csv");
-    sadFeatures.Learn("../../sad.csv");   
+    smileFeatures.Learn("../../problem_small.txt");
+    //angryFeatures.Learn("../../smile.csv");
+    //sadFeatures.Learn("../../sad.csv");
 }
 
 /* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */
@@ -27,7 +27,7 @@ std::string MachineLearning::LearnPicture()
     std::cin >> recognize_picture_name;
     // add a path to the pictures .csv data
     std::string pic_name;
-    pic_name = "../../" + recognize_picture_name + ".csv";
+    pic_name = "../../" + recognize_picture_name + ".txt";
     // extract emotion weightings from the picture
     pictureFeatures.Learn(pic_name.c_str());
 
@@ -63,7 +63,7 @@ void MachineLearning::RecognizeEmotion()
 }
 
 int MachineLearning::CheckForEmotion(const int& smallest_weighting_vector_size,
-    const FacialFeatures& emotion_weightings, // 
+    const FacialFeatures& emotion_weightings, //
     const FacialFeatures& emotion_to_recognize_weightings)
 {
     // test only against the same amount of weightings from the test picture and tested picture
