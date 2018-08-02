@@ -14,8 +14,8 @@ void MachineLearning::Learn()
     // Learn smile
     /* first variable is the name of the file that contains features of a certain emotion, second is the name of the file mainly serving debugging purposes so we can check what weightings for a given emotion are */
     smileFeatures.Learn("../../problem_small.txt");
-    //angryFeatures.Learn("../../smile.csv");
-    //sadFeatures.Learn("../../sad.csv");
+    angryFeatures.Learn("../../problem_small.txt");
+    sadFeatures.Learn("../../problem_small.txt");
 }
 
 /* similarly it goes for the picture we want to recognize. We pass a file containing the facial features and the second file is mainly for the debugging purposes. It doesn't have to be passed. There's an overloaded version of Learn function that takes only the name of the learning file */

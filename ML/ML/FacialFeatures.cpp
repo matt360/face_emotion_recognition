@@ -25,7 +25,7 @@ void FacialFeatures::Release()
 
 int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_file)
 {
-    // file to store the .csv 
+    // file to store the .csv
     FILE *file;
     // two chars to read from two columns in each row in the .csv file
     char str1[10], str2[10];
@@ -40,11 +40,23 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
     }
 
     // read data into a vector from a .csv file with two columns
-    while (EOF != fscanf(file, " %[^,], %s ", str1, str2))
-    {
-        learning_data.push_back(std::stoi(str1));
-        learning_data.push_back(std::stoi(str2));
-    }
+    //while (EOF != fscanf(file, " %[^ ], %s ", str1, str2))
+    //{
+    //    learning_data.push_back(std::stoi(str1));
+    //    learning_data.push_back(std::stoi(str2));
+    //}
+
+	std::string line;
+	while (std::getline(emotion_learning_file, line))
+	{
+		std::stringstream ss(line);
+		int a, b, c;
+		if (ss >> a >> b >> c)
+		{
+			// Add a, b, and c to their respective arrays
+		}
+	}
+
     // close the file after reading the data into the vector
     fclose(file);
 }
@@ -63,7 +75,7 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
 //
 // in order to extract facial features we need to take the appropriate pairs of data and subtrack them so we can get:
 // a distance of the left_eyebrow from the left_eye :
-// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) = 
+// 5 - 6  = (5 pairs of numbers) - (6 pairs of numbers) = (even - odd) + ... + (even - odd) =
 // (0 - 1) + (2 - 3) + (4 - 5) + (6 - 7) + (8 - 9) = -(weight value for the emotion)
 //
 // const int CHIN = 17;	// 17 * (a, b) - number of variables for a facial feature is 34 (17 * 2 variables) - reason: it's stored in a 1D array
@@ -81,7 +93,7 @@ int FacialFeatures::GenerateLearningVectorFromFile(const char* emotion_learning_
 void FacialFeatures::PopulateFacialFeaturesVectors()
 {
 
-    // the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size 
+    // the number of rows to cover all the feautres from one picture is 72 but because there's two colums and they are stored in 1D array we must divide the size
     // by 144 to get the number of pictures examined.
     std::cout << "STEP: " << STEP << std::endl;
     std::cout << "FacialFeatures::FacialFeatures::learning_data size / STEP: " << FacialFeatures::learning_data.size() / STEP << std::endl;
@@ -90,7 +102,7 @@ void FacialFeatures::PopulateFacialFeaturesVectors()
     for (int j = 0; j < FacialFeatures::learning_data.size() / STEP; j++)
     {
         // chin (17) [1] - (number of paired elements for the facial feature) [place in the .csv file + i]
-        //for (int i = 0; i < 34; i++) 
+        //for (int i = 0; i < 34; i++)
         for (; i < (CHIN * 2) + j * STEP; i++) // we need to multiply by 2 to get all the data since it's a 1D array
             chin.push_back(FacialFeatures::learning_data.at(i)); // create a vector of chin positions
 
@@ -185,7 +197,7 @@ void FacialFeatures::CalculateEmotionWeightings()
         weightingsVector.push_back(left_eyebrow.at(i) - left_eye.at(i + 1));
     }
 
-    // a distance of the right_eyebrow from the right_eye: 
+    // a distance of the right_eyebrow from the right_eye:
     for (int i = 0; i < right_eyebrow.size(); i++)
     {
         // (5 - 6)

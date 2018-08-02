@@ -22,7 +22,7 @@ public:
     // emotion weighted values (ewv)
     std::vector<int> weightingsVector;
     // to store smile weightings
-    std::ofstream weightingsFile;
+    std::ifstream weightingsFile;
 public:
     int GenerateLearningVectorFromFile(const char* emotion_learning_file);
     void Learn(const char * learning_file_name);
